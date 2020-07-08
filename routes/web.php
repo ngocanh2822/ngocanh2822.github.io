@@ -65,3 +65,6 @@ Route::post('insta-comment',['uses'=>'Pagecontroller@postinstacmt'])->name('post
 
 Route::get('vip-like-month',['uses'=>'Pagecontroller@viplikemonth']);
 Route::post('vip-like-month',['uses'=>'Pagecontroller@postviplikemonth'])->name('post_viplikemonth');
+
+Route::get('vip-like-mount',['uses'=>'Pagecontroller@viplikemount']);
+Route::post('vip-like-mount',['uses'=>'Pagecontroller@postviplikemount'])->name('post_viplikemount');

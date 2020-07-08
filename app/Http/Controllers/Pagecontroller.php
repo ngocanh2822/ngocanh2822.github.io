@@ -19,6 +19,7 @@ use App\Insta_like;
 use App\Insta_follow;
 use App\Insta_cmt;
 use App\Vip_like_month;
+use App\Vip_like_mount;
 class Pagecontroller extends Controller
 {
     function getIndex()
@@ -426,6 +427,34 @@ class Pagecontroller extends Controller
         $viplikemonth->trangthai="1";
         if(isset($request->link)&& isset($request->minlike) && isset($request->maxlike) && isset($request->slbai) && isset($request->slngay) && isset($request->dongia) ){
             $viplikemonth->save();
+             return redirect()->back()->with('success','Gửi yêu cầu thành công');
+        }
+        else{
+            return redirect()->back()->with('error','Không để trống nội dung');
+        }
+
+    }
+    function viplikemount()
+    {
+        return view("user.content.viplikemount");
+    }
+    function postviplikemount(Request $request)
+    {
+        $tg = Carbon::now('Asia/Ho_Chi_Minh');
+        $viplikemount = new Vip_like_mount();
+        $viplikemount->link=$request->link;
+        $viplikemount->minlike=$request->minlike;
+        $viplikemount->maxlike=$request->maxlike;
+        $viplikemount->slbai=$request->slbai;
+        $viplikemount->dongia=$request->dongia;
+        $viplikemount->thanhtien=$request->thanhtien;
+        $viplikemount->ID_chucnang="6";
+        $viplikemount->ghichu = isset($request->ghichu) ? $request->ghichu : "";
+        $viplikemount->thoigian=$tg;
+        $viplikemount->ID_user="1";
+        $viplikemount->trangthai="1";
+        if(isset($request->link)&& isset($request->minlike) && isset($request->maxlike) && isset($request->slbai)&& isset($request->dongia) ){
+            $viplikemount->save();
              return redirect()->back()->with('success','Gửi yêu cầu thành công');
         }
         else{
