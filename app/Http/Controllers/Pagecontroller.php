@@ -33,6 +33,12 @@ class Pagecontroller extends Controller
     }
     function getLogin()
     {
+        if (Auth::check() && Auth::user()->level==0) {
+            return redirect()->route('index');
+        }
+        if (Auth::check() && Auth::user()->level==1) {
+            return redirect()->route('ad_index');
+        }
         return view("user.layouts.login");
     }
     function postLogin()
