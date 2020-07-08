@@ -1,0 +1,280 @@
+*{
+	box-sizing: border-box;
+}
+body{
+	width: 100%;
+	font-family: "Roboto", sans-serif;
+}
+h1,h4{
+	font-family: "Roboto", sans-serif;
+}
+/*footer*/
+.footer_area {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    overflow: hidden;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: #1C4A65;
+    color: #fff;
+    padding-bottom: 1rem;
+}
+.footer__add ul,
+.footer__add ul li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+footer {
+    overflow: hidden;
+}
+
+.footer__add {
+    position: relative;
+}
+
+.footer__add h5 {
+    font-size: 2rem;
+    color: #fff200;
+}
+
+.footer__add ul {
+    position: relative;
+}
+
+.footer__add ul li {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.footer__add ul li i {
+    display: inline-block;
+    margin-right: .5rem;
+    color: #fff200;
+}
+
+.footer_title h6 {
+    font-size: 2rem;
+    position: relative;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    color: #fff200;
+}
+
+.footer_title h6:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    background-color: #fff200;
+    width: 70px;
+    height: 3px;
+}
+
+.coppyright {
+    border-top: 5px solid #1C5236;
+    padding-top: .5rem;
+    font-size: 1.3rem;
+}
+/*end footer*/
+/* content */
+.banner{
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+.banner-img{
+	background-color: yellow;
+	height: 400px;
+	margin: auto;
+}
+.service-row{
+}
+.service-detail{
+	height: auto;
+}
+.service-line{
+	padding-bottom: 10px;
+	width: 90%;
+	float: right;
+	height: 2px;
+}
+/*lợi ích*/
+.benefit-img{
+	border-radius: 200px;
+	/*width: 100%;*/
+}
+.float-right{
+	float: right;
+}
+.mg-2{
+	margin: 10px;
+}
+.pd-2{
+	padding: 10px;
+}
+p{
+	text-align: justify;
+}
+.benefit-title{
+	color: #08466A;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+.green{
+	color: #168822;
+	font-weight: bold;
+}
+.feature-title{
+	align-items: center;
+	color: #066D11;
+	text-align: center;
+	font-weight: bold;
+}
+ b{
+	display: block;
+	flex: 1;
+	height: 2px;
+	opacity: 0.3;
+	width: 50%;
+	background-color: #B6BBB9;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.ml{
+	margin-left: 40px
+}
+.feature-line{
+	padding-bottom: 10px;
+	width: 100%;
+	float: right;
+	height: 2px;
+}
+@media screen and (max-width: 945px) {
+   .feature-img{
+   	display: none;
+   }
+   .colnone{
+   	display: none;
+   }
+}
+.ma{
+	margin: auto;
+}
+.cmt{
+	margin-top: 30px;
+}
+.cmt-img-title{
+	width: 100%;
+	height: auto;
+}
+.cmt-title{
+	color: #1D555C;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.cmt-text{
+	background-color: #CEEDF1;
+	border-radius: 20px;
+	margin-bottom: 20px;
+}
+.cmt-img{
+	border-radius: 50%;
+}
+/* end content */
+.wrapper{
+		background-color: #E8FFF9;
+		height: auto;
+		margin-top: 10px;
+		margin-left: 5px;
+		margin-right: 5px;
+		border-radius: 10px;
+	}
+table{
+	width: 100%;
+	margin-bottom: 5%;
+}
+td{
+	padding-left: 2%;
+	padding-bottom: 2%;
+	color: #1997B9;
+}
+
+.short{
+	width: 30%;
+}
+.bold{
+	font-weight: bold;
+}
+input{
+	width: 100%;
+	height: 50px;
+	border-radius: 5px;
+	box-sizing: border-box;
+	padding: 5px;
+	border: 1px solid gray;
+	box-shadow: 3px 1px 2px 0px #666;
+}
+select{
+	box-shadow: 3px 1px 2px 0px #666;
+	height: 50px !important;
+	box-sizing: border-box;
+}
+input:focus {
+  background-color: #EEF5F3;
+}
+button{
+	padding: 5px 20px 5px 20px;
+	background-color: #074614;
+	border: none;
+	color: white;
+}
+button:hover{
+	background-color: #4AC63E;
+}
+a{
+		text-decoration-line: none;
+		color: white;
+}
+a:hover{
+	text-decoration-line: none;
+	color: white;
+}
+table{
+	border: hidden;
+	border: none;
+}
+.luuy{
+		background-color: #2C69A5;
+		border-radius: 10px;
+		color: white;
+		padding-top: 2%;
+		padding-bottom: 2%;
+		margin-bottom: 5%;
+		font-weight: bold;
+	}
+.ghichu{
+	height: 100px;
+}
+.thanhtien{
+	background-color: red;
+	color: white;
+	padding: 10px;
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+.nen{
+	background-color: #F1E467;
+	margin:0%;
+	padding: 2%;
+	font-weight: bold;
+	border-radius: 5px;
+	color: #8F0A10;
+}
