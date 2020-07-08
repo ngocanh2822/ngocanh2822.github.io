@@ -20,6 +20,7 @@ use App\Insta_follow;
 use App\Insta_cmt;
 use App\Vip_like_month;
 use App\Vip_like_mount;
+use Auth;
 class Pagecontroller extends Controller
 {
     function getIndex()
