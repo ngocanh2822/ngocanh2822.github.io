@@ -4,7 +4,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Dịch vụ</h1>
+          <h1 class="h3 mb-2 text-gray-800">Nạp tiền</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -24,11 +24,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                  	@foreach($thanhtoan as $row)
+                  	@foreach($naptien as $row)
                     <tr>
-                      <td>{{$row->ID_user}}</td>
-                      <td>ten</td>
-                      <td>tien</td>
+                      <td>{{$row->id}}</td>
+                      <td>{{$row->name}}</td>
+                      <td>{{$row->user_money}}</td>
                       <td><input type="number" name="tien" class="form-control"></td>
                       <td><button class="btn btn-primary"><i class="fas fa-check"></i></button></td>
                     </tr>

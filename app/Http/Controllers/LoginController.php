@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Alert;
+use App\User;
+
 class LoginController extends Controller
 {
     public function checklogin(Request $rq){
@@ -12,7 +14,7 @@ class LoginController extends Controller
     	$password = $rq->password;
     	if (Auth::attempt(['email'=>$email,'password'=>$password])) {
             if(Auth::user()->level==1){
-                return redirect()->route('ad_index');
+                return redirect()->route('donhang.index');
             }
     		else{
                 return redirect()->route('index'); 

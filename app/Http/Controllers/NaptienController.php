@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Donhang;
+use App\Users;
 use Illuminate\Http\Request;
 
-class DonhangController extends Controller
+class NaptienController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class DonhangController extends Controller
      */
     public function index()
     {
-        $class = new Donhang;
-        $donhang = $class->get_newlist();
-        return view('admin.pages.donhang',compact('donhang'));
+        $user = new Users;
+        $naptien = $user->get_userlist();
+        return view('admin.pages.naptien',compact('naptien'));
     }
 
     /**
@@ -43,10 +43,10 @@ class DonhangController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Donhang  $donhang
+     * @param  \App\Users  $users
      * @return \Illuminate\Http\Response
      */
-    public function show(Donhang $donhang)
+    public function show(Users $users)
     {
         //
     }
@@ -54,35 +54,33 @@ class DonhangController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Donhang  $donhang
+     * @param  \App\Users  $users
      * @return \Illuminate\Http\Response
      */
-    public function edit(Donhang $donhang)
+    public function edit(Users $users)
     {
         //
-
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Donhang  $donhang
+     * @param  \App\Users  $users
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Donhang $donhang)
+    public function update(Request $request, Users $users)
     {
         //
-        dd($donhang);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Donhang  $donhang
+     * @param  \App\Users  $users
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Donhang $donhang)
+    public function destroy(Users $users)
     {
         //
     }

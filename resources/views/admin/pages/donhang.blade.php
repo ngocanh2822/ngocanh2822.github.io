@@ -3,7 +3,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Dịch vụ</h1>
+          <h1 class="h3 mb-2 text-gray-800">Đơn hàng</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -15,23 +15,31 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>ID Đơn hàng</th>
+                      <th>STT</th>
                       <th>ID người dùng</th>
-                      <th>ID chức năng</th>
+                      <th>Loại</th>
                       <th>Nội dung</th>
+                      <th>Tổng tiền</th>
                       <th>Thời gian order</th>
                       <th>Hoàn thành</th>
                     </tr>
                   </thead>
                   <tbody>
-                  	@foreach($newlist as $row)
+                  	@foreach($donhang as $row)
                     <tr>
-                      <td>{{$row->id}}</td>
-                      <td>{{$row->id_user}}</td>
-                      <td>{{$row->id_chucnang}}</td>
+                      <td>{{$row->ID}}</td>
+                      <td>{{$row->ID_user}}</td>
                       <td>{{$row->chucnang_name}}</td>
-                      <td>{{$row->thoigian_order}}</td>
-                      <td><button class="btn btn-primary"><i class="fas fa-check"></i></button></td>
+                      <td><?php echo $row->noidung?></td>
+                      <td>{{$row->tongtien}}</td>
+                      <td>{{$row->thoigianorder}}</td>
+                      <td>
+                        <form action="{{route('donhang.update',$row->ID)}}" method="POST">
+                          @method('PUT')
+                          @csrf
+                          <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i></button>
+                        </form>
+                      </td>
                     </tr>
                     @endforeach
                   </tbody>
