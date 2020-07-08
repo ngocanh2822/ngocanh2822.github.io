@@ -16,15 +16,16 @@ use Illuminate\Support\Facades\Route;
 	Route::get('home',['uses'=>'Pagecontroller@getIndex'])->name('index');
 	Route::get('/',['uses'=>'Pagecontroller@getIndex'])->name('index');
 	Route::get('lien-he',['uses'=>'Pagecontroller@getLienhe']);
+	Route::get('lien-he',['uses'=>'Pagecontroller@getLienhe']);
 	Route::get('login',['uses'=>'Pagecontroller@getLogin'])->name('login');
 	Route::post('login',['uses'=>'Pagecontroller@postLogin'])->name('post_login');
 Route::group(['middleware'=>'user'],function () {
 
-<<<<<<< HEAD
-=======
+
+
 Route::get('dich-vu',['uses'=>'Pagecontroller@getDichvu'])->name('dichvu');
-Route::get('lien-he',['uses'=>'Pagecontroller@getLienhe']);
->>>>>>> e2b914120d0dfda062e758f1c91cc430b53d0116
+
+
 
 	Route::get('dich-vu',['uses'=>'Pagecontroller@getDichvu']);
 	
