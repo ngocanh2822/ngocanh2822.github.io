@@ -72,7 +72,7 @@ background-color: #E49459;
 <div class="wrapper">
 	<h6 style="text-align: center; padding-top: 1%; color: blue;font-weight: bold;font-size: 2rem;">
 	@foreach($info as $row)
-		Xin chào: {{$row->user_name}}
+		Xin chào: {{$row->email}}
 	@endforeach
 	</h6>
 		<hr>
@@ -86,17 +86,13 @@ background-color: #E49459;
 	    			<tr>
 				        <td class="short bold ">Tên tài khoản</td>
 				        <td>@foreach($info as $row)
-				        	<input class="form-control giancach" type="text" value="{{$row->user_name}}">
+				        	<input class="form-control giancach" type="text" value="{{$row->email}}">
 				        	@endforeach
 				        </td>
 	    			</tr>
 	    			<tr>
-				        <td class="short bold">Email</td>
-				        <td><input class="form-control giancach" type="text" name="email" placeholder="Nhập email" value="{{$row->user_email}}" ></td>
-	    			</tr>
-	    			<tr>
 				        <td class="short bold">Họ và tên</td>
-				        <td><input class="form-control giancach" type="text" name="hoten" placeholder="Nhập họ và tên" value="{{$row->user_hoten}}"></td>
+				        <td><input class="form-control giancach" type="text" name="hoten" placeholder="Nhập họ và tên" value="{{$row->name}}"></td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Số điện thoai</td>
@@ -124,20 +120,6 @@ background-color: #E49459;
 	    			</tr>
 				</table>
 </form>
-@if(session('error'))
-					<div class="col-md-12">
-						<div class="alert alert-danger">
-						  <strong>Lỗi!</strong> {{session('error')}}.
-						</div>
-					</div>
-@endif
-@if(session('success'))
-					<div class="col-md-12">
-						<div class="alert alert-success">
-  						<strong>Thành công!</strong> {{session('success')}}.
-						</div>
-					</div>
-@endif
 			</div>
 		</div>
 <!---------phần ghi chú mở rộng---------->
@@ -145,7 +127,9 @@ background-color: #E49459;
 			<div class="col-12">
 				<div class="col-12 luuy">
 				<h6><i class="fa fa-dollar" style="margin-right: 2%;"></i>SỐ DƯ TÀI KHOẢN</h6>
-				<h5 style="text-align: center;">100.000</h5>
+				@foreach($info as $row)
+				<h5 style="text-align: center;">{{$row->user_money}} VNĐ</h5>
+				@endforeach
 				<p style="text-align: center;"><i>LƯU Ý:Tài khoản của bạn phải có ít nhất 50K mới có thể kích hoạt order!</i></p>
 				</div>
 			</div>

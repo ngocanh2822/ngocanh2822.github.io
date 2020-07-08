@@ -8,7 +8,7 @@ use App\Muaban;
 use App\Ripnick;
 use App\Doiten;
 use App\Baomat;
-use App\Nguoidung;
+use App\User;
 use Carbon\Carbon;
 use App\Donhang;
 use Auth;
@@ -40,55 +40,59 @@ class Pagecontroller extends Controller
 
     function getuserpayment()
     {
-        $info= Nguoidung::where('ID_user',1)->get(); //sửa lại id_user thành session['id']
+        $info= User::where('id',2)->get(); //sửa lại id_user thành session['id']
         return view("user.content.naptien",compact('info'));
     }
     function getTaikhoan()
     {
-        $info= Nguoidung::where('ID_user','1')->get(); //sửa lại id_user thành session['id']
+        $info= User::where('id','2')->get(); //sửa lại id_user thành session['id']
         return view("user.content.taikhoan",compact('info'));
     }
     function postTaikhoan(Request $request)
     {
-        $nd = Nguoidung::select('*')->where('ID_user',1)->first(); //sửa lại id_user thành session['id']
+        $nd = User::select('*')->where('id',2)->first(); //sửa lại id_user thành session['id']
         $gt = $nd->password;
-        $nguoidung = new Nguoidung();
-        $nguoidung->user_email = isset($request->email) ? $request->email : $nd->user_email;
-        $nguoidung->user_hoten = isset($request->hoten) ? $request->hoten : $nd->user_hoten;
+        $nguoidung = new User();
+        $nguoidung->name = isset($request->hoten) ? $request->hoten : $nd->user_hoten;
         $nguoidung->user_sdt = isset($request->SDT) ? $request->SDT : $nd->user_sdt;
         $nguoidung->user_fbid = isset($request->fbid) ? $request->fbid : $nd->user_fbid;
-        $nguoidung->password = $request->mkm1;
+        $nguoidung->password = md5($request->mkm1);
         $mkm1=$request->mkm1;
         $mkm2=$request->mkm2;
         $mkc=$request->mkc;
         if(isset($mkc) && isset($mkm1) && isset($mkm2)) 
         {
-            if( $mkm1 == $mkm2 && $mkc == $gt )
+            if( $mkm1 == $mkm2 && md5($mkc) == $gt )
             {
-                $nguoidung = Nguoidung::where('ID_user', 1)
-                ->update(['password'=>$nguoidung->password,'user_email'=>$nguoidung->user_email,'user_hoten'=>$nguoidung->user_hoten,'user_sdt'=>$nguoidung->user_sdt,'user_fbid'=>$nguoidung->user_fbid]);
-                $info= Nguoidung::where('ID_user','1')->get(); //sửa lại id_user thành session['id']
-                return redirect()->back()->with('success','Lưu thay đổi thành công.',compact('info'));  
+                $nguoidung = User::where('id', 2)
+                ->update(['password'=>$nguoidung->password,'name'=>$nguoidung->name,'user_sdt'=>$nguoidung->user_sdt,'user_fbid'=>$nguoidung->user_fbid]);
+                $info= User::where('id','2')->get(); //sửa lại id_user thành session['id']
+                Alert::success('Thành công!', 'Lưu thay đổi thành công');
+                return redirect()->back()->with(compact('info'));  
             }
             else{
-                if($mkm1 == $mkm2 && $mkc != $gt)
+                if($mkm1 == $mkm2 && md5($mkc) != $gt)
                 {
-                    return redirect()->back()->with('error','Mật khẩu không đúng!');
+                    Alert::error('Lỗi!', 'Mật khẩu không đúng!');
+                    return redirect()->back();
                 }
-                if($mkm1 != $mkm2 && $mkc == $gt)
+                if($mkm1 != $mkm2 && md5($mkc) == $gt)
                 {
-                    return redirect()->back()->with('error','Mật khẩu mới và xác nhận mật khẩu mới phải giống nhau!');
+                    Alert::error('Lỗi!', 'Mật khẩu mới và xác nhận mật khẩu mới phải giống nhau!!');
+                    return redirect()->back();
                 }
-                if($mkm1 != $mkm2 && $mkc != $gt)
+                if($mkm1 != $mkm2 && md5($mkc) != $gt)
                 {
-                    return redirect()->back()->with('error','Nhập lại mật khẩu!');
+                    Alert::error('Lỗi!', 'Nhập lại mật khẩu!');
+                    return redirect()->back();
                 }
             }
             
         }
         else
         {
-            return redirect()->back()->with('error','Không để trống nội dung!');
+            Alert::error('Lỗi!', 'Không để trống nội dung!');
+            return redirect()->back();
         }
 
     }
