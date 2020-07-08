@@ -56,13 +56,13 @@ class Pagecontroller extends Controller
         $nguoidung->name = isset($request->hoten) ? $request->hoten : $nd->user_hoten;
         $nguoidung->user_sdt = isset($request->SDT) ? $request->SDT : $nd->user_sdt;
         $nguoidung->user_fbid = isset($request->fbid) ? $request->fbid : $nd->user_fbid;
-        $nguoidung->password = md5($request->mkm1);
+        $nguoidung->password = bcrypt($request->mkm1);
         $mkm1=$request->mkm1;
         $mkm2=$request->mkm2;
         $mkc=$request->mkc;
         if(isset($mkc) && isset($mkm1) && isset($mkm2)) 
         {
-            if( $mkm1 == $mkm2 && md5($mkc) == $gt )
+            if( $mkm1 == $mkm2 && bcrypt($mkc) == $gt )
             {
                 $nguoidung = User::where('id', 2)
                 ->update(['password'=>$nguoidung->password,'name'=>$nguoidung->name,'user_sdt'=>$nguoidung->user_sdt,'user_fbid'=>$nguoidung->user_fbid]);
@@ -71,17 +71,17 @@ class Pagecontroller extends Controller
                 return redirect()->back()->with(compact('info'));  
             }
             else{
-                if($mkm1 == $mkm2 && md5($mkc) != $gt)
+                if($mkm1 == $mkm2 && bcrypt($mkc) != $gt)
                 {
                     Alert::error('Lỗi!', 'Mật khẩu không đúng!');
                     return redirect()->back();
                 }
-                if($mkm1 != $mkm2 && md5($mkc) == $gt)
+                if($mkm1 != $mkm2 && bcrypt($mkc) == $gt)
                 {
                     Alert::error('Lỗi!', 'Mật khẩu mới và xác nhận mật khẩu mới phải giống nhau!!');
                     return redirect()->back();
                 }
-                if($mkm1 != $mkm2 && md5($mkc) != $gt)
+                if($mkm1 != $mkm2 && bcrypt($mkc) != $gt)
                 {
                     Alert::error('Lỗi!', 'Nhập lại mật khẩu!');
                     return redirect()->back();

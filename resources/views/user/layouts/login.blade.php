@@ -40,9 +40,9 @@
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
                   <form class="user" action="{{route('post_login')}}" method="post">
-                    @csrf
+                    {!!csrf_field()!!}
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Tên đăng nhập" name="user_name" required="">
+                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Tên đăng nhập" name="email" required="">
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mật khẩu" name="password" required="">
