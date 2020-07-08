@@ -20,17 +20,8 @@ use Illuminate\Support\Facades\Route;
 	Route::get('login',['uses'=>'Pagecontroller@getLogin'])->name('login');
 	Route::post('login',['uses'=>'Pagecontroller@postLogin'])->name('post_login');
 Route::group(['middleware'=>'user'],function () {
-
-
-
-Route::get('dich-vu',['uses'=>'Pagecontroller@getDichvu'])->name('dichvu');
-
-
-
+	Route::get('dich-vu',['uses'=>'Pagecontroller@getDichvu'])->name('dichvu');
 	Route::get('dich-vu',['uses'=>'Pagecontroller@getDichvu']);
-	
-
-	
 
 	Route::get('tai-khoan',['uses'=>'Pagecontroller@getTaikhoan']);
 	Route::post('tai-khoan',['uses'=>'Pagecontroller@postTaikhoan'])->name('post_taikhoan');
