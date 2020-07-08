@@ -20,6 +20,11 @@ use Illuminate\Support\Facades\Route;
 	Route::post('login',['uses'=>'Pagecontroller@postLogin'])->name('post_login');
 Route::group(['middleware'=>'user'],function () {
 
+<<<<<<< HEAD
+=======
+Route::get('dich-vu',['uses'=>'Pagecontroller@getDichvu'])->name('dichvu');
+Route::get('lien-he',['uses'=>'Pagecontroller@getLienhe']);
+>>>>>>> e2b914120d0dfda062e758f1c91cc430b53d0116
 
 	Route::get('dich-vu',['uses'=>'Pagecontroller@getDichvu']);
 	

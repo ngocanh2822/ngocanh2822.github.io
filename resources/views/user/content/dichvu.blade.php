@@ -113,8 +113,8 @@ a svg{
 </head>
 <body>
 	<div id="sideNavigation" class="sidenav">
-  <a href="dich-vu">Logo</a>
-  <a href="dich-vu">Trang Chủ</a>
+  <a href="home">Logo</a>
+  <a href="dich-vu">Trang Chủ Dịch Vụ</a>
   <!------------------------->
 
          <a class="" href="#" data-toggle="collapse" data-target="#target1">
@@ -173,6 +173,7 @@ a svg{
 </nav> 
 
 @yield('content')
+
 
 </div>
 @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
