@@ -87,20 +87,6 @@
 	    			</tr>
 				</table>
 </form>
-@if(session('error'))
-					<div class="col-md-12">
-						<div class="alert alert-danger">
-						  <strong>Lỗi!</strong> {{session('error')}}.
-						</div>
-					</div>
-@endif
-@if(session('success'))
-					<div class="col-md-12">
-						<div class="alert alert-success">
-  						<strong>Thành công!</strong> {{session('success')}}.
-						</div>
-					</div>
-@endif
 			</div>
 		</div>
 <!---------phần ghi chú mở rộng---------->

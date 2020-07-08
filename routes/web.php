@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('home',['uses'=>'Pagecontroller@getIndex'])->name('index');
 Route::get('/',['uses'=>'Pagecontroller@getIndex'])->name('index');
 
-Route::get('dich-vu',['uses'=>'Pagecontroller@getDichvu']);
+Route::get('dich-vu',['uses'=>'Pagecontroller@getDichvu'])->name('dichvu');
 Route::get('lien-he',['uses'=>'Pagecontroller@getLienhe']);
 
 Route::get('login',['uses'=>'Pagecontroller@getLogin']);

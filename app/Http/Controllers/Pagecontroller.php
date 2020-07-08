@@ -21,6 +21,7 @@ use App\Insta_cmt;
 use App\Vip_like_month;
 use App\Vip_like_mount;
 use Auth;
+Use Alert;
 class Pagecontroller extends Controller
 {
     function getIndex()
@@ -126,12 +127,16 @@ class Pagecontroller extends Controller
         $muaban->ID_chucnang="9";
         $muaban->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $muaban->thoigian=$tg;
+        $muaban->ID_user="1";
+        $muaban->trangthai="1";
         if(isset($request->loainick) && isset($request->SL) && isset($request->SDT)){
             $muaban->save();
-             return redirect()->back()->with('success','Gửi yêu cầu thành công');
+            Alert::success('Thành công!', 'Gửi yêu cầu thành công');
+            return redirect()->back();
         }
         else{
-            return redirect()->back()->with('error','Không để trống nội dung');
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back();
         }
 
     }
@@ -146,12 +151,16 @@ class Pagecontroller extends Controller
         $ripnick->ID_chucnang="10";
         $ripnick->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $ripnick->thoigian=$tg;
+        $ripnick->ID_user="1";
+        $ripnick->trangthai="1";
         if(isset($request->link)&& isset($request->loairip)&& isset($request->loaithoigian) && isset($request->SDT) ){
             $ripnick->save();
-             return redirect()->back()->with('success','Gửi yêu cầu thành công');
+            Alert::success('Thành công!', 'Gửi yêu cầu thành công');
+            return redirect()->back();
         }
         else{
-            return redirect()->back()->with('error','Không để trống nội dung');
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back();
         }
 
     }
@@ -165,12 +174,16 @@ class Pagecontroller extends Controller
         $doiten->ID_chucnang="11";
         $doiten->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $doiten->thoigian=$tg;
+        $doiten->ID_user="1";
+        $doiten->trangthai="1";
         if(isset($request->link)&& isset($request->tendoi)&& isset($request->SDT) ){
             $doiten->save();
-             return redirect()->back()->with('success','Gửi yêu cầu thành công');
+            Alert::success('Thành công!', 'Gửi yêu cầu thành công');
+            return redirect()->back();
         }
         else{
-            return redirect()->back()->with('error','Không để trống nội dung');
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back();
         }
 
     }
@@ -185,12 +198,16 @@ class Pagecontroller extends Controller
         $baomat ->ID_chucnang="12";
         $baomat ->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $baomat ->thoigian=$tg;
+        $baomat->ID_user="1";
+        $baomat->trangthai="1";
         if(isset($request->link)&& isset($request->loaibaomat) && isset($request->thangbaomat)&& isset($request->SDT) ){
             $baomat ->save();
-            return redirect()->back()->with('success','Gửi yêu cầu thành công');
+            Alert::success('Thành công!', 'Gửi yêu cầu thành công');
+            return redirect()->back();
         }
         else{
-            return redirect()->back()->with('error','Không để trống nội dung');
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back();
         }
 
     }
@@ -215,10 +232,12 @@ class Pagecontroller extends Controller
         $bufflikepost->trangthai="1";
         if(isset($request->link)&& isset($request->sl)&& isset($request->camxuc) && isset($request->dongia) ){
             $bufflikepost->save();
-             return redirect()->back()->with('success','Gửi yêu cầu thành công');
+            Alert::success('Thành công!', 'Tạo tiến trình thành công');
+            return redirect()->back();
         }
         else{
-            return redirect()->back()->with('error','Không để trống nội dung');
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back();
         }
 
     }
@@ -241,10 +260,12 @@ class Pagecontroller extends Controller
         $buffsub->trangthai="1";
         if(isset($request->link)&& isset($request->sl) && isset($request->dongia) ){
             $buffsub->save();
-             return redirect()->back()->with('success','Gửi yêu cầu thành công');
+            Alert::success('Thành công!', 'Tạo tiến trình thành công');
+            return redirect()->back();
         }
         else{
-            return redirect()->back()->with('error','Không để trống nội dung');
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back();
         }
 
     }
@@ -267,10 +288,12 @@ class Pagecontroller extends Controller
         $bufffanpage->trangthai="1";
         if(isset($request->link)&& isset($request->sl) && isset($request->dongia) ){
             $bufffanpage->save();
-             return redirect()->back()->with('success','Gửi yêu cầu thành công');
+            Alert::success('Thành công!', 'Tạo tiến trình thành công');
+            return redirect()->back();
         }
         else{
-            return redirect()->back()->with('error','Không để trống nội dung');
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back();
         }
 
     }
@@ -294,10 +317,12 @@ class Pagecontroller extends Controller
         $buffcmt->trangthai="1";
         if(isset($request->link)&& isset($request->noidung) && isset($request->dongia) ){
             $buffcmt->save();
-             return redirect()->back()->with('success','Gửi yêu cầu thành công');
+            Alert::success('Thành công!', 'Tạo tiến trình thành công');
+            return redirect()->back();
         }
         else{
-            return redirect()->back()->with('error','Không để trống nội dung');
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back();
         }
 
     }
@@ -320,10 +345,12 @@ class Pagecontroller extends Controller
         $buffshare->trangthai="1";
         if(isset($request->link)&& isset($request->sl) && isset($request->dongia) ){
             $buffshare->save();
-             return redirect()->back()->with('success','Gửi yêu cầu thành công');
+            Alert::success('Thành công!', 'Tạo tiến trình thành công');
+            return redirect()->back();
         }
         else{
-            return redirect()->back()->with('error','Không để trống nội dung');
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back();
         }
 
     }
@@ -346,10 +373,12 @@ class Pagecontroller extends Controller
         $instalike->trangthai="1";
         if(isset($request->link)&& isset($request->sl) && isset($request->dongia) ){
             $instalike->save();
-             return redirect()->back()->with('success','Gửi yêu cầu thành công');
+            Alert::success('Thành công!', 'Tạo tiến trình thành công');
+            return redirect()->back();
         }
         else{
-            return redirect()->back()->with('error','Không để trống nội dung');
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back();
         }
 
     }
@@ -372,10 +401,12 @@ class Pagecontroller extends Controller
         $instafl->trangthai="1";
         if(isset($request->link)&& isset($request->sl) && isset($request->dongia) ){
             $instafl->save();
-             return redirect()->back()->with('success','Gửi yêu cầu thành công');
+            Alert::success('Thành công!', 'Tạo tiến trình thành công');
+            return redirect()->back();
         }
         else{
-            return redirect()->back()->with('error','Không để trống nội dung');
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back();
         }
 
     }
@@ -399,10 +430,12 @@ class Pagecontroller extends Controller
         $instacmt->trangthai="1";
         if(isset($request->link)&& isset($request->noidung) && isset($request->dongia) ){
             $instacmt->save();
-             return redirect()->back()->with('success','Gửi yêu cầu thành công');
+            Alert::success('Thành công!', 'Tạo tiến trình thành công');
+            return redirect()->back();
         }
         else{
-            return redirect()->back()->with('error','Không để trống nội dung');
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back();
         }
 
     }
@@ -428,10 +461,12 @@ class Pagecontroller extends Controller
         $viplikemonth->trangthai="1";
         if(isset($request->link)&& isset($request->minlike) && isset($request->maxlike) && isset($request->slbai) && isset($request->slngay) && isset($request->dongia) ){
             $viplikemonth->save();
-             return redirect()->back()->with('success','Gửi yêu cầu thành công');
+            Alert::success('Thành công!', 'Tạo tiến trình thành công');
+            return redirect()->back();
         }
         else{
-            return redirect()->back()->with('error','Không để trống nội dung');
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back();
         }
 
     }
@@ -456,10 +491,12 @@ class Pagecontroller extends Controller
         $viplikemount->trangthai="1";
         if(isset($request->link)&& isset($request->minlike) && isset($request->maxlike) && isset($request->slbai)&& isset($request->dongia) ){
             $viplikemount->save();
-             return redirect()->back()->with('success','Gửi yêu cầu thành công');
+            Alert::success('Thành công!', 'Tạo tiến trình thành công');
+            return redirect()->back();
         }
         else{
-            return redirect()->back()->with('error','Không để trống nội dung');
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back();
         }
 
     }
