@@ -175,6 +175,7 @@ a svg{
 @yield('content')
 
 </div>
+@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 $('#topnav').click(function () {
