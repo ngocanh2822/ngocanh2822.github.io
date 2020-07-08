@@ -114,7 +114,7 @@ a svg{
 <body>
 	<div id="sideNavigation" class="sidenav">
   <a href="dich-vu">Logo</a>
-  <a href="dich-vu">Trang Chủ</a>
+  <a href="home">Trang Chủ</a>
   <!------------------------->
 
          <a class="" href="#" data-toggle="collapse" data-target="#target1">
@@ -173,6 +173,7 @@ a svg{
 </nav> 
 
 @yield('content')
+
 
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
