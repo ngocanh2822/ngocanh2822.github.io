@@ -26,9 +26,14 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <?php 
+                    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                    $i=1 + ($page-1)*10;?>
                   	@foreach($donhang as $row)
+                    
                     <tr>
-                      <td>{{$row->ID}}</td>
+                      <td>{{$i}}</td>
+                      <?php $i= $i+1;?>
                       <td>{{$row->ID_user}}</td>
                       <td>{{$row->chucnang_name}}</td>
                       <td><?php echo $row->noidung?></td>
@@ -43,9 +48,11 @@
                         </form>
                       </td>
                     </tr>
+                    
                     @endforeach
                   </tbody>
                 </table>
+                {{$donhang->links()}}
               </div>
             </div>
           </div>

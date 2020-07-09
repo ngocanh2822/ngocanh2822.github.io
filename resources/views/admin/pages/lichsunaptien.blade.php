@@ -3,7 +3,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Đơn hàng đã hoàn thành</h1>
+          <h1 class="h3 mb-2 text-gray-800">Lịch sử nạp tiền</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -16,33 +16,31 @@
                   <thead>
                     <tr>
                       <th>STT</th>
-                      <th>Tên</th>
-                      <th>Loại</th>
+                      <th>Người nạp</th>
+                      <th>Tài khoản nạp</th>
                       <th>Nội dung</th>
-                      <th>Tổng tiền</th>
-                      <th>Thời gian hoàn thành</th>
-                      <th>Ghi chú</th>
+                      <th>Số tiền</th>
+                      <th>Thời gian nạp</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php 
                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                     $i=1 + ($page-1)*10;?>
-                  	@foreach($donhang as $row)
+                  	@foreach($lichsu as $row)
                     <tr>
                       <td>{{$i}}</td>
+                      <td>{{$row->ID_admin}}</td>
                       <td>{{$row->ID_user}}</td>
-                      <td>{{$row->chucnang_name}}</td>
                       <td><?php echo $row->noidung?></td>
-                      <td>{{$row->tongtien}}</td>
-                      <td>{{$row->updated_at}}</td>
-                      <td>{{$row->ghichu}}</td>
+                      <td>{{$row->sotien}}</td>
+                      <td>{{$row->thoigian}}</td>
                     </tr>
                     <?php $i++?>
                     @endforeach
                   </tbody>
                 </table>
-                {{$donhang->links()}}
+                {{$lichsu->links()}}
               </div>
             </div>
           </div>
