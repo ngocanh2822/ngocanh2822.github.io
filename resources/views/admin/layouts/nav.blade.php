@@ -14,19 +14,29 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="{{route('ad_index')}}">
+        <a class="nav-link" href="{{route('donhang.index')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Đơn hàng</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="{{route('thanhtoan.index')}}">
+        <a class="nav-link" href="{{route('naptien.index')}}">
           <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+          <span>Nạp tiền</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('naptien.index')}}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Lịch sử nạp tiền</span></a>
       </li>
 
       <!-- Divider -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('naptien.index')}}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Đã hoàn thành</span></a>
+      </li>
       <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Sidebar Toggler (Sidebar) -->

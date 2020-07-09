@@ -121,10 +121,6 @@ a svg{
              FACEBOOK BUFF<i class=" mg fa fa-caret-down" aria-hidden="true"></i>
          </a>
          <div id="target1" class="collapse">
-            <a href="fb-buy-sell" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> Mua Bán Fanpage, Nick Facebook</a>
-            <a href="fb-rip-nick" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> Rip Nick, Bài Đăng, Page, Group</a>
-            <a href="fb-rename" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> Đổi Tên Profile Và Page Quá 60 Ngày</a>
-            <a href="fb-security" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> Bảo Mật Và Bảo Kê Facebook</a>
             <a href="fb-like-post" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> Buff Like Post</a>
             <a href="fb-follow" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> Buff Sub</a>
             <a href="fb-fan-page" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> Buff Like Fanpage</a>
@@ -153,7 +149,16 @@ a svg{
             <a href="insta-follow" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> Buff Follow Instagram</a>
             <a href="insta-comment" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> Buff Comment Instagram</a>
          </div>
-  
+          
+        <a class="" href="#" data-toggle="collapse" data-target="#target4">
+             KHÁC<i class=" mg fa fa-caret-down" aria-hidden="true"></i>
+         </a>
+         <div id="target4" class="collapse">
+            <a href="fb-buy-sell" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> Mua Bán Fanpage, Nick Facebook</a>
+            <a href="fb-rip-nick" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> Rip Nick, Bài Đăng, Page, Group</a>
+            <a href="fb-rename" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> Đổi Tên Profile Và Page Quá 60 Ngày</a>
+            <a href="fb-security" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> Bảo Mật Và Bảo Kê Facebook</a>
+         </div>
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -169,7 +174,22 @@ a svg{
         <path d="M0,23 30,23" stroke="#000" stroke-width="5"/>
     </svg>
   </a>
+  <a class="taikhoan" href="logout" ><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng xuất</a>
   <a class="taikhoan" href="tai-khoan" ><i class="fa fa-user"></i>Tài khoản</a>
+  <?php
+    $money = Auth::user()->user_money;
+    $j = 0;
+    $n = strlen($money)-1;
+    for ($l=$n; $l >=0; $l--) 
+    { 
+      $j++;
+      if ($j%3 == 0 && $j != $n+1) 
+      {
+        $money = substr($money, 0, $l) . "." . substr($money, $l);
+      }
+    }
+  ?>
+  <a class="taikhoan" href="" >{{$money}} coin</a>
 </nav> 
 
 @yield('content')
