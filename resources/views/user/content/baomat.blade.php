@@ -21,7 +21,7 @@
 				<table border="0">
 	    			<tr>
 				        <td class="short bold">Nhập link profile, page, group cần bảo vệ</td>
-				        <td><input class="form-control" type="text" name="link" placeholder="Nhập link profile, page, group cần bảo vệ"></td>
+				        <td><input class="form-control" type="text" name="link" placeholder="Nhập link profile, page, group cần bảo vệ" value="{{old('link')}}"></td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Bạn muốn loại bảo mật nào</td>
@@ -36,19 +36,21 @@
 	    			<tr>
 				        <td class="short bold">Nhập số tháng cần bảo vệ</td>
 				        <td>
-							<input type="number" name="thangbaomat" min="1" max="12">
+							<input type="number" name="thangbaomat" min="1" max="12" value="{{old('thangbaomat')}}">
 						</td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Số điện thoại để liên lạc</td>
-				        <td><input class="form-control" type="text" name="SDT" placeholder="Nhập số điện thoại"></td>
+				        <td>
+				        	<p class="nen">Nhập đúng SĐT để chúng tôi có thể liên lạc với bạn!</p>
+				        	<input class="form-control" type="text" name="SDT" placeholder="Nhập số điện thoại" value="{{old('SDT')}}"></td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Ghi chú</td>
-				        <td><input class="form-control" type="text" name="ghichu" placeholder="Nhập ghi chú (nếu có)"></td>
+				        <td><input class="form-control" type="text" name="ghichu" placeholder="Nhập ghi chú (nếu có)" value="{{old('ghichu')}}"></td>
 	    			</tr>
 	    			<tr>
-				        <td class="short bold">Hành động</td>
+				        <td class="short bold"></td>
 				        <td style="text-align: center;"><button class="btn" type="submit">Gửi yêu cầu</button></td>
 	    			</tr>
 				</table>

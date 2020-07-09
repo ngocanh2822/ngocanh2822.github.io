@@ -55,11 +55,13 @@
 				        <td ></td>
 				        <td>
 							<p class="nen">Mỗi dòng tương ứng với 1 bình luận!</p>
+							<div id="d"></div>
 						</td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Nội dung bình luận:</td>
-				        <td><textarea rows="9" name="noidung" cols="70" style="width: 100%;" id="noidung"  style="white-space: pre-line; "> </textarea>
+				        <td><p class="nen" style="background-color: #F86C72;">Bạn đã nhập <i id="dong">0</i> dòng</p><textarea rows="9" name="noidung" cols="70" style="width: 100%;" id="noidung"  style="white-space: pre-line; " onkeydown ="Change(this.id)"> </textarea>
+				        <div id="nd"></div>
 				        </td>
 	    			</tr>
 	    			<tr>
@@ -71,11 +73,10 @@
 				        <td class="short bold">Thành tiền:</td>
 				        <td>
 				        	<div class="thanhtien">
-				        	Bạn đã nhập <i class="slcmt"></i> bình luận <br/>
 				        	Số tiền bạn phải thanh toán là: <i class="thanhtoan" style="font-size: 2rem; font-weight: bold;"></i> coin
 				        	</div>
 				        	<div id="tt">
-	    				</div>
+	    					</div>
 				        </td>
 	    			</tr>
 	    			<tr>
@@ -116,9 +117,24 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-	$('#noidung').click(function(){
-		var line = $("#noidung").value; 
-		console.log(line);
+	let dongia=0, soluong=0;
+	function Change(id){
+		var noidung = $('#'+id).val().split(/[\r\n]+/);
+		var count = noidung.length;
+		soluong = count;
+		kq = soluong * dongia;
+		$('.thanhtoan').html(kq);
+		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
+		$('#dong').html(count);
+		$('#d').html('<input type="text" name="sl" value="'+count+' " hidden="true" >');
+		$('#nd').html('<input type="text" name="nd" value="'+noidung+' " hidden="true" >');
+	}
+	$('#dongia').on('click', function(){
+		var dg = $("#dongia").val();
+		dongia = dg;
+		kq = soluong * dongia;
+		$('.thanhtoan').html(kq);
+		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
 	});
 </script>
 

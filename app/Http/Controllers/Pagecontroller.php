@@ -12,6 +12,7 @@ use App\Users;
 use App\User;
 use Carbon\Carbon;
 use App\Donhang;
+use App\Yeucau;
 use Auth;
 Use Alert;
 class Pagecontroller extends Controller
@@ -33,6 +34,10 @@ class Pagecontroller extends Controller
             return redirect()->route('donhang.index');
         }
         return view("user.layouts.login");
+    }
+    function getRegister()
+    {
+        return view("user.layouts.register");
     }
     // function postLogin()
     // {
@@ -130,98 +135,92 @@ class Pagecontroller extends Controller
     function postfbbuysell(Request $request)
     {
         $id = Auth::user()->id;  
-        $tg = Carbon::now('Asia/Ho_Chi_Minh');
-        $muaban = new Muaban();
-        $muaban->loainick=$request->loainick;
-        $muaban->SL=$request->SL;
-        $muaban->SDT=$request->SDT;
-        $muaban->ID_chucnang="9";
-        $muaban->ghichu = isset($request->ghichu) ? $request->ghichu : "";
-        $muaban->thoigian=$tg;
-        $muaban->ID_user= $id;
-        $muaban->trangthai="1";
-        if(isset($request->loainick) && isset($request->SL) && isset($request->SDT)){
-            $muaban->save();
-            Alert::success('Thành công!', 'Gửi yêu cầu thành công');
+        $yeucau = new Yeucau();
+        $yeucau->SDT=$request->SDT;
+        $yeucau->ID_chucnang="9";
+        $yeucau->ghichu = isset($request->ghichu) ? $request->ghichu : "";
+        $yeucau->ID_user= $id;
+        $yeucau->trangthai="1";
+        if(isset($request->loainick) && isset($request->SL) && isset($request->SDT))
+        {
+            $noidung = "Loại nick: ".$request->loainick."<br/> Số lượng Sub/Like: ".$request->SL;
+            $yeucau->noidung= $noidung;
+            $yeucau->save();
+            Alert::success('Thành công!', 'Gửi yêu cầu thành công, chúng tôi sẽ sớm liên hệ với bạn.');
             return redirect()->back();
         }
         else{
             Alert::error('Lỗi!', 'Không để trống nội dung');
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
 
     }
     function postfbripnick(Request $request)
     {
-        $id = Auth::user()->id;  
-        $tg = Carbon::now('Asia/Ho_Chi_Minh');
-        $ripnick = new ripnick();
-        $ripnick->link=$request->link;
-        $ripnick->loairip=$request->loairip;
-        $ripnick->loaithoigian=$request->loaithoigian;
-        $ripnick->SDT=$request->SDT;
-        $ripnick->ID_chucnang="10";
-        $ripnick->ghichu = isset($request->ghichu) ? $request->ghichu : "";
-        $ripnick->thoigian=$tg;
-        $ripnick->ID_user=$id;
-        $ripnick->trangthai="1";
-        if(isset($request->link)&& isset($request->loairip)&& isset($request->loaithoigian) && isset($request->SDT) ){
-            $ripnick->save();
-            Alert::success('Thành công!', 'Gửi yêu cầu thành công');
+        $id = Auth::user()->id;
+        $yeucau = new Yeucau();  
+        $yeucau->SDT=$request->SDT;
+        $yeucau->ID_chucnang="10";
+        $yeucau->ghichu = isset($request->ghichu) ? $request->ghichu : "";
+        $yeucau->ID_user=$id;
+        $yeucau->trangthai="1";
+        if(isset($request->link)&& isset($request->loairip)&& isset($request->loaithoigian) && isset($request->SDT) )
+        {
+            $noidung = "Link: ".$request->link."<br/> Loại Rip: ".$request->loairip."<br/> Thời gian: ".$request->loaithoigian;
+            $yeucau->noidung= $noidung;
+            $yeucau->save();
+            Alert::success('Thành công!', 'Gửi yêu cầu thành công, chúng tôi sẽ sớm liên hệ với bạn.');
             return redirect()->back();
         }
         else{
             Alert::error('Lỗi!', 'Không để trống nội dung');
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
 
     }
      function postfbrename(Request $request)
     {
         $id = Auth::user()->id;  
-        $tg = Carbon::now('Asia/Ho_Chi_Minh');
-        $doiten = new Doiten();
-        $doiten->link=$request->link;
-        $doiten->tendoi=$request->tendoi;
-        $doiten->SDT=$request->SDT;
-        $doiten->ID_chucnang="11";
-        $doiten->ghichu = isset($request->ghichu) ? $request->ghichu : "";
-        $doiten->thoigian=$tg;
-        $doiten->ID_user= $id;
-        $doiten->trangthai="1";
-        if(isset($request->link)&& isset($request->tendoi)&& isset($request->SDT) ){
-            $doiten->save();
-            Alert::success('Thành công!', 'Gửi yêu cầu thành công');
+        $yeucau = new Yeucau();  
+        $yeucau->SDT=$request->SDT;
+        $yeucau->ID_chucnang="11";
+        $yeucau->ghichu = isset($request->ghichu) ? $request->ghichu : "";
+        $yeucau->ID_user= $id;
+        $yeucau->trangthai="1";
+        if(isset($request->link)&& isset($request->tendoi)&& isset($request->SDT) )
+        {
+            $noidung = "Link: ".$request->link."<br/> Tên cần đổi: ".$request->tendoi;
+            $yeucau->noidung= $noidung;
+            $yeucau->save();
+            Alert::success('Thành công!', 'Gửi yêu cầu thành công, chúng tôi sẽ sớm liên hệ với bạn.');
             return redirect()->back();
         }
         else{
             Alert::error('Lỗi!', 'Không để trống nội dung');
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
 
     }
      function postfbsecurity(Request $request)
     {
         $id = Auth::user()->id;  
-        $tg = Carbon::now('Asia/Ho_Chi_Minh');
-        $baomat = new Baomat();
-        $baomat ->link=$request->link;
-        $baomat ->loaibaomat=$request->loaibaomat;
-        $baomat ->thangbaomat=$request->thangbaomat;
-        $baomat ->SDT=$request->SDT;
-        $baomat ->ID_chucnang="12";
-        $baomat ->ghichu = isset($request->ghichu) ? $request->ghichu : "";
-        $baomat ->thoigian=$tg;
-        $baomat->ID_user=$id;
-        $baomat->trangthai="1";
-        if(isset($request->link)&& isset($request->loaibaomat) && isset($request->thangbaomat)&& isset($request->SDT) ){
-            $baomat ->save();
-            Alert::success('Thành công!', 'Gửi yêu cầu thành công');
+        $yeucau = new Yeucau();
+        $yeucau ->SDT=$request->SDT;
+        $yeucau ->ID_chucnang="12";
+        $yeucau ->ghichu = isset($request->ghichu) ? $request->ghichu : "";
+        $yeucau->ID_user=$id;
+        $yeucau->trangthai="1";
+        if(isset($request->link)&& isset($request->loaibaomat) && isset($request->thangbaomat)&& isset($request->SDT) )
+        {
+            $noidung = "Link: ".$request->link."<br/> Loại bảo mật: ".$request->loaibaomat."<br/> Số tháng cần bảo vệ: ".$request->thangbaomat;
+            $yeucau->noidung= $noidung;
+            $yeucau ->save();
+            Alert::success('Thành công!', 'Gửi yêu cầu thành công, chúng tôi sẽ sớm liên hệ với bạn.');
             return redirect()->back();
         }
         else{
             Alert::error('Lỗi!', 'Không để trống nội dung');
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
 
     }
@@ -527,7 +526,7 @@ class Pagecontroller extends Controller
         $donhang = new Donhang();
         $donhang->ID_chucnang="3";
         $donhang->thoigianorder=$tg;
-        $donhang->tongtien="0"; //chưa tính được sl, tổng tiền
+        $donhang->tongtien=$request->thanhtien;
         $donhang->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $donhang->ID_user= $id;
         $donhang->trangthai="1";
@@ -636,6 +635,47 @@ class Pagecontroller extends Controller
         else{
             Alert::error('Lỗi!', 'Không để trống nội dung');
             return redirect()->back();
+        }
+
+    }
+    function vipcmtmonth()
+    {
+        return view("user.content.vipcmtmonth");
+    }
+    function postvipcmtmonth(Request $request)
+    {
+        $id = Auth::user()->id;  
+        $money  = Auth::user()->user_money; 
+        $tg = Carbon::now('Asia/Ho_Chi_Minh');
+        $donhang = new Donhang();
+        $donhang->ID_chucnang="8";
+        $donhang->thoigianorder=$tg;
+        $donhang->tongtien=$request->thanhtien;
+        $donhang->ghichu = isset($request->ghichu) ? $request->ghichu : "";
+        $donhang->ID_user= $id;
+        $donhang->trangthai="1";
+        if(isset($request->link)&& isset($request->mincmt) && isset($request->maxcmt) && isset($request->slbai)&& isset($request->slngay)&& isset($request->dongia) )
+        {
+            if($donhang->tongtien <= $money  )
+            {
+                $noidung = "Link: ".$request->link."<br/> Mincmt: ".$request->mincmt."<br/> Maxcmt: ".$request->maxcmt."<br/> Số lượng bài: ".$request->slbai."<br/> Số lượng ngày mua VIP: ".$request->slngay."<br/> Đơn giá: ".$request->dongia."<br/> Nội dung: ".$request->nd ;
+                $donhang->noidung= $noidung;
+                $donhang->save();
+                $money = $money - $donhang->tongtien;
+                $user = new Users;
+                $user->thanhtoan($id,$money);
+                Alert::success('Thành công!', 'Tạo tiến trình thành công');
+                return redirect()->back();
+            }
+            else
+            {
+                Alert::error('Lỗi!', 'Số tiền trong tài khoản của bạn không đủ');
+                return redirect()->back()->withInput();
+            }
+        }
+        else{
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back()->withInput();
         }
 
     }

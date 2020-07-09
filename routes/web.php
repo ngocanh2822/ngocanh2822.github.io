@@ -69,8 +69,13 @@ Route::group(['middleware'=>'user'],function ()
 
 	Route::get('vip-like-mount',['uses'=>'Pagecontroller@viplikemount']);
 	Route::post('vip-like-mount',['uses'=>'Pagecontroller@postviplikemount'])->name('post_viplikemount');
+
+	Route::get('vip-comment-month',['uses'=>'Pagecontroller@vipcmtmonth']);
+	Route::post('vip-comment-month',['uses'=>'Pagecontroller@postvipcmtmonth'])->name('post_vipcmtmonth');
+
 });
 // admin
+Route::get('register',['uses'=>'Pagecontroller@getRegister'])->name('register');
 Route::get('login',['uses'=>'Pagecontroller@getLogin'])->name('login');
 	//Route::post('login',['uses'=>'Pagecontroller@postLogin'])->name('post_login');
 Route::post('checklogin',['uses'=>'LoginController@checklogin'])->name('checklogin');

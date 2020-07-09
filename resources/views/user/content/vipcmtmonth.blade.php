@@ -19,30 +19,46 @@
 	}
 </style>
 <div class="wrapper">
-	<h6 style="text-align: center; padding-top: 1%; color: blue;font-weight: bold;font-size: 2rem;">BUFF COMMENT POST</h6>
+	<h6 style="text-align: center; padding-top: 1%; color: blue;font-weight: bold;font-size: 2rem;">VIP COMMENT BÀI VIẾT THÁNG</h6>
 		<hr>
 	<div class="row">
 
 		<div class="col-12 col-md-8 ">
 			<div class="col-12 ">
-<form action=" {{route('post_fbcmt')}}" method="post">
+<form action="{{route('post_vipcmtmonth')}}" method="post">
 	{!!csrf_field()!!}
 				<table border="0">
 	    			<tr>
-				        <td class="short bold">Nhập link bài post:</td>
-				        <td><input class="form-control" type="text" name="link" placeholder="Nhập link bài post"></td>
+				        <td class="short bold">Nhập Link hoặc ID profile cần cài VIP:</td>
+				        <td><input class="form-control" type="text" name="link" placeholder="Nhập Link hoặc ID profile cần cài VIP" value="{{old('link')}}"></td>
 	    			</tr>
 	    			<tr>
-				        <td ></td>
-				        <td>
-							<p class="nen">Mẹo nhỏ: Hệ thống ưu tiên chạy các job giá cao trước nên nếu bạn cần gấp bạn có thể set giá job của mình cao hơn 1 vài đồng để chạy nhanh nhất có thể nhé.</p><br/>
-							<p class="nen">Lưu ý: Nên buff dư thêm 30 - 50% trên tổng số lượng để tránh tụt.</p>
-						</td>
+	    				<td colspan="2">
+					        <div class="row" >
+					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
+					        			<p class="bold" style="margin-bottom: 0;">Số lượng comment nhỏ nhất cần tăng mỗi bài viết:</p>
+					        			<input type="number" id="mincmt" name="mincmt" min="40" value="{{old('mincmt')}}">
+					        		</div>
+					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
+					        			<p class="bold" style="margin-bottom: 0;">Số lượng comment lớn nhất cần tăng mỗi bài viết:</p>
+					        			<input type="number" id="maxcmt" name="maxcmt" min="40" value="{{old('maxcmt')}}">
+					        		</div>
+					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
+					        			<p class="bold" style="margin-bottom: 0;">Số lượng bài viết trong 1 ngày:</p>
+					        			<input type="number" id="slbai" name="slbai" min="1" value="{{old('slbai')}}">
+					        		</div>
+					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
+					        			<p class="bold" style="margin-bottom: 0;">Số ngày cần mua Vip:</p>
+					        			<input type="number" id="slngay" name="slngay" min="1" value="{{old('slngay')}}">
+					        		</div>
+					        </div>
+					        <p class="nen" style="margin-top: 1%;">Tổng tiền của gói VIP sẽ = (Giá tiền mỗi tương tác) x (Số lượng comment lớn nhất mỗi bài) x (Số lượng bài trong ngày) x (Số ngày đăng ký VIP)</p>
+					    </td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Giá tiền mỗi tương tác:</td>
 				        <td>
-							<input type="number" id="dongia" name="dongia" min="500">
+							<input type="number" id="dongia" name="dongia" min="500" value="{{old('dongia')}}">
 						</td>
 	    			</tr>
 	    			<tr>
@@ -52,23 +68,15 @@
 						</td>
 	    			</tr>
 	    			<tr>
-				        <td ></td>
-				        <td>
-							<p class="nen">Mỗi dòng tương ứng với 1 bình luận!</p>
-				        	<div id="d"></div>
-						</td>
-	    			</tr>
-	    			<tr>
 				        <td class="short bold">Nội dung bình luận:</td>
-				        <td><p class="nen" style="background-color: #F86C72;">Bạn đã nhập <i id="dong">0</i> dòng</p>
+				        <td><p class="nen" style="background-color: #F86C72;">Mỗi dòng tương ứng với 1 bình luận!<br/>Bạn đã nhập <i id="dong">0</i> dòng</p>
 				        	<textarea rows="9" name="noidung" cols="70" style="width: 100%;" id="noidung"  style="white-space: pre-line; " onkeydown ="Change(this.id)"> </textarea>
 				        	<div id="nd"></div>
 				        </td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Ghi chú:</td>
-				        <td><input class="form-control ghichu" type="text" name="ghichu" placeholder="Nhập ghi chú (nếu có)">
-				        </td>
+				        <td><input class="form-control ghichu" type="text" name="ghichu" placeholder="Nhập ghi chú (nếu có)"></td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Thành tiền:</td>
@@ -118,25 +126,45 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-	let dongia=0, soluong=0;
+	let maxcmt=0; 
+	let slngay=0;
+	let slbai=0; 
+	let dongia=0;
+	let kq=0;
+	$('#maxcmt').on('click', function(){
+		var max = $("#maxcmt").val();
+		maxcmt = max;
+		kq = maxcmt * slbai * slngay * dongia;
+		$('.thanhtoan').html(kq);
+		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
+	});
+	$('#slbai').on('click', function(){
+		var slb = $("#slbai").val();
+		slbai = slb;
+		kq = maxcmt * slbai * slngay * dongia;
+		$('.thanhtoan').html(kq);
+		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
+	});
+	$('#slngay').on('click', function(){
+		var sln = $("#slngay").val();
+		slngay = sln;
+		kq = maxcmt * slbai * slngay * dongia;
+		$('.thanhtoan').html(kq);
+		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
+	});
+	$('#dongia').on('click', function(){
+		var dg = $("#dongia").val();
+		dongia = dg;
+		kq = maxcmt * slbai * slngay * dongia;
+		$('.thanhtoan').html(kq);
+		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
+	});
 	function Change(id){
 		var noidung = $('#'+id).val().split(/[\r\n]+/);
 		var count = noidung.length;
 		soluong = count;
-		kq = soluong * dongia;
-		$('.thanhtoan').html(kq);
-		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
 		$('#dong').html(count);
-		$('#d').html('<input type="text" name="sl" value="'+count+' " hidden="true" >');
 		$('#nd').html('<input type="text" name="nd" value="'+noidung+' " hidden="true" >');
 	}
-	$('#dongia').on('click', function(){
-		var dg = $("#dongia").val();
-		dongia = dg;
-		kq = soluong * dongia;
-		$('.thanhtoan').html(kq);
-		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
-	});
 </script>
-
 @endsection

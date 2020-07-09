@@ -85,7 +85,7 @@ body {
   font-size: 1.2rem!important;
 }
 .small:hover{
-  background-color: #F8C040;
+  background-color: #EC8E0E;
   border-radius: 10px;
 }
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */

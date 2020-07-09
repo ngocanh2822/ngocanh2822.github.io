@@ -24,7 +24,7 @@
 				        <td>
 							<form class="form-inline">
 							    <div class="input-group">
-							    	<input class="form-control" type="text" name="link" placeholder="Nhập link">
+							    	<input class="form-control" type="text" name="link" placeholder="Nhập link" value="{{old('link')}}">
 							    </div>
 							</form>
 				    	</td>
@@ -51,14 +51,14 @@
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Số điện thoại để liên lạc</td>
-				        <td><input class="form-control" type="text" name="SDT" placeholder="Nhập số điện thoại"></td>
+				        <td><p class="nen">Nhập đúng SĐT để chúng tôi có thể liên lạc với bạn!</p><input class="form-control" type="text" name="SDT" placeholder="Nhập số điện thoại" value="{{old('SDT')}}"></td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Ghi chú</td>
-				        <td><input class="form-control" type="text" name="ghichu" placeholder="Nhập ghi chú"></td>
+				        <td><input class="form-control" type="text" name="ghichu" placeholder="Nhập ghi chú" value="{{old('ghichu')}}"></td>
 	    			</tr>
 	    			<tr>
-				        <td class="short bold">Hành động</td>
+				        <td class="short bold"></td>
 				        <td style="text-align: center;"><button class="btn" type="submit">Gửi yêu cầu</button></td>
 	    			</tr>
 				</table>
