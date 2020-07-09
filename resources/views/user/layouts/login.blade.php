@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Login</title>
+  <title>Dịch vụ FB - Đăng nhập</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{asset('fonts/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -39,8 +39,8 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
-                  <form class="user" action="{{route('post_login')}}" method="post">
-                    {!!csrf_field()!!}
+                  <form class="user" action="{{route('checklogin')}}" method="post">
+                    @csrf
                     <div class="form-group">
                       <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Tên đăng nhập" name="email" required="">
                     </div>
@@ -73,7 +73,7 @@
     </div>
 
   </div>
-
+  @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
   <!-- Bootstrap core JavaScript-->
   <script src="{{asset('jquery/jquery.min.js')}}"></script>
   <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>

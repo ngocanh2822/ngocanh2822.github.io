@@ -25,6 +25,12 @@ class Pagecontroller extends Controller
     }
     function getLogin()
     {
+        if (Auth::check() && Auth::user()->level==0) {
+            return redirect()->route('index');
+        }
+        if (Auth::check() && Auth::user()->level==1) {
+            return redirect()->route('ad_index');
+        }
         return view("user.layouts.login");
     }
     function postLogin()
@@ -56,7 +62,6 @@ class Pagecontroller extends Controller
         $nguoidung->name = isset($request->hoten) ? $request->hoten : $nd->user_hoten;
         $nguoidung->user_sdt = isset($request->SDT) ? $request->SDT : $nd->user_sdt;
         $nguoidung->user_fbid = isset($request->fbid) ? $request->fbid : $nd->user_fbid;
-        $nguoidung->password = bcrypt($request->mkm1);
         $mkm1=$request->mkm1;
         $mkm2=$request->mkm2;
         $mkc=$request->mkc;
