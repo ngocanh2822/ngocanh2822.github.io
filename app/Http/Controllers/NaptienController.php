@@ -72,6 +72,10 @@ class NaptienController extends Controller
     public function update(Request $request, Users $users)
     {
         //
+        dd($users);
+        $id = $users->id;
+        $us = new Users;
+        $us->naptien($id,$users->tien);
     }
 
     /**

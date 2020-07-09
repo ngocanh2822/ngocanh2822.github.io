@@ -33,7 +33,7 @@
 
       <!-- Divider -->
       <li class="nav-item">
-        <a class="nav-link" href="{{route('naptien.index')}}">
+        <a class="nav-link" href="{{route('listcomplete')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Đã hoàn thành</span></a>
       </li>
