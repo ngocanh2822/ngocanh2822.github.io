@@ -13,7 +13,8 @@ class Users extends Model
     public function get_userlist(){
     	return $this->where('level',0)->paginate(10);
     }
-    public function thanhtoan($id_user,$tongtien){
-    	
+    public function naptien($id_user,$naptien){
+    	$user = $this->find($id_user);
+    	dd($id_user);
     }
 }

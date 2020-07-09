@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Donhang;
 use Illuminate\Http\Request;
-
+use Auth;
+use App\Users;
+use Alert;
 class DonhangController extends Controller
 {
     /**
@@ -73,7 +75,10 @@ class DonhangController extends Controller
     public function update(Request $request, Donhang $donhang)
     {
         //
-        dd($donhang);
+        $dh = new Donhang;
+        $dh->hoanthanh($donhang->ID);
+        Alert::success('Complete','Đã lưu');
+        return redirect()->back();
     }
 
     /**

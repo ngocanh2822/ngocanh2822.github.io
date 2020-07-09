@@ -12,4 +12,9 @@ class AdminController extends Controller
     	$newlist = $donhang->get_newlist();
     	return view('admin.pages.newlist',compact('newlist'));
     }
+    public function listcomplete(){
+    	$donhang = new Donhang;
+    	$donhang = $donhang->listcomplete();
+    	return view('admin.pages.hoanthanh',compact('donhang'));
+    }
 }

@@ -77,5 +77,6 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 	Route::resource('donhang','DonhangController');
     //Route::get('index', ['uses'=>'AdminController@index'])->name('ad_index');
     Route::resource('naptien','NaptienController');
+    Route::get('hoan-thanh',['uses'=>'AdminController@listcomplete'])->name('listcomplete');
 });
 Route::get('logout',['uses'=>'LoginController@logout'])->name('ad_logout');

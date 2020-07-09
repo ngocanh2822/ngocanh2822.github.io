@@ -3,7 +3,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Đơn hàng</h1>
+          <h1 class="h3 mb-2 text-gray-800">Đơn hàng đã hoàn thành</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -20,9 +20,8 @@
                       <th>Loại</th>
                       <th>Nội dung</th>
                       <th>Tổng tiền</th>
-                      <th>Thời gian order</th>
+                      <th>Thời gian hoàn thành</th>
                       <th>Ghi chú</th>
-                      <th>Hoàn thành</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -33,15 +32,8 @@
                       <td>{{$row->chucnang_name}}</td>
                       <td><?php echo $row->noidung?></td>
                       <td>{{$row->tongtien}}</td>
-                      <td>{{$row->thoigianorder}}</td>
+                      <td>{{$row->updated_at}}</td>
                       <td>{{$row->ghichu}}</td>
-                      <td>
-                        <form action="{{route('donhang.update',$row->ID)}}" method="POST">
-                          @method('PUT')
-                          @csrf
-                          <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i></button>
-                        </form>
-                      </td>
                     </tr>
                     @endforeach
                   </tbody>

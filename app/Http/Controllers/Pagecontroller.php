@@ -29,7 +29,7 @@ class Pagecontroller extends Controller
             return redirect()->route('index');
         }
         if (Auth::check() && Auth::user()->level==1) {
-            return redirect()->route('ad_index');
+            return redirect()->route('donhang.index');
         }
         return view("user.layouts.login");
     }

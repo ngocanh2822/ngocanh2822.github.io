@@ -1,6 +1,5 @@
 @extends('admin.layouts.master')
 @section('content')
-
         <div class="container-fluid">
 
           <!-- Page Heading -->
@@ -16,7 +15,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>ID người dùng</th>
+                      <th>STT</th>
                       <th>Tên</th>
                       <th>Số dư tài khoản</th>
                       <th>Nạp thêm</th>
@@ -25,13 +24,35 @@
                   </thead>
                   <tbody>
                   	@foreach($naptien as $row)
+                    <?php $i =1?>
                     <tr>
-                      <td>{{$row->id}}</td>
-                      <td>{{$row->name}}</td>
-                      <td>{{$row->user_money}}</td>
+                      <td>{{$i}}</td>
+                      <td>{{$row->email}}</td>
+                      <td>
+                        <?php 
+                              $user_money = $row->user_money;
+                              $j = 0;
+                              $n = strlen($user_money)-1;
+                              for ($l=$n; $l >=0; $l--) { 
+                                  $j++;
+                                  if ($j%3 == 0 && $j != $n+1) {
+                                      $user_money = substr($user_money, 0, $l) . "." . substr($user_money, $l);
+                                  }
+                              }
+                        ?>
+                        {{$user_money}} VNĐ</td>
                       <td><input type="number" name="tien" class="form-control"></td>
-                      <td><button class="btn btn-primary"><i class="fas fa-check"></i></button></td>
+                      <td>
+                        <form action="{{route('naptien.update',$row->id)}}" method="POST">
+                          @method('PUT')
+                          @csrf
+                          <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i></button>
+                        </form>
+                        
+
+                      </td>
                     </tr>
+                    <?php $i++?>
                     @endforeach
                   </tbody>
                 </table>

@@ -10,7 +10,7 @@ use App\User;
 class LoginController extends Controller
 {
     public function checklogin(Request $rq){
-    	$email = $rq->user_name;
+    	$email = $rq->email;
     	$password = $rq->password;
     	if (Auth::attempt(['email'=>$email,'password'=>$password])) {
             if(Auth::user()->level==1){
