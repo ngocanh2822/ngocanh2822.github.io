@@ -17,7 +17,7 @@ class LoginController extends Controller
                 return redirect()->route('donhang.index');
             }
     		else{
-                return redirect()->route('index'); 
+                return redirect()->route('dichvu'); 
             }
     	}
     	else{
@@ -27,6 +27,6 @@ class LoginController extends Controller
     }
     public function logout(){
     	Auth::logout();
-    	return redirect()->route('login');
+    	return redirect()->route('index');
     }
 }

@@ -17,12 +17,11 @@ use Illuminate\Support\Facades\Route;
 	Route::get('/',['uses'=>'Pagecontroller@getIndex'])->name('index');
 	Route::get('lien-he',['uses'=>'Pagecontroller@getLienhe']);
 	Route::get('lien-he',['uses'=>'Pagecontroller@getLienhe']);
-	Route::get('login',['uses'=>'Pagecontroller@getLogin'])->name('login');
-	Route::post('login',['uses'=>'Pagecontroller@postLogin'])->name('post_login');
+	
+Route::group(['middleware'=>'user'],function () 
+{
 
-Route::group(['middleware'=>'user'],function () {
 	Route::get('dich-vu',['uses'=>'Pagecontroller@getDichvu'])->name('dichvu');
-	Route::get('dich-vu',['uses'=>'Pagecontroller@getDichvu']);
 
 	Route::get('tai-khoan',['uses'=>'Pagecontroller@getTaikhoan']);
 	Route::post('tai-khoan',['uses'=>'Pagecontroller@postTaikhoan'])->name('post_taikhoan');
@@ -70,9 +69,17 @@ Route::group(['middleware'=>'user'],function () {
 
 	Route::get('vip-like-mount',['uses'=>'Pagecontroller@viplikemount']);
 	Route::post('vip-like-mount',['uses'=>'Pagecontroller@postviplikemount'])->name('post_viplikemount');
+
+	Route::get('vip-comment-month',['uses'=>'Pagecontroller@vipcmtmonth']);
+	Route::post('vip-comment-month',['uses'=>'Pagecontroller@postvipcmtmonth'])->name('post_vipcmtmonth');
+
 });
 // admin
+Route::get('register',['uses'=>'Pagecontroller@getRegister'])->name('register');
+Route::get('login',['uses'=>'Pagecontroller@getLogin'])->name('login');
+	//Route::post('login',['uses'=>'Pagecontroller@postLogin'])->name('post_login');
 Route::post('checklogin',['uses'=>'LoginController@checklogin'])->name('checklogin');
+
 Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 	Route::resource('donhang','DonhangController');
     //Route::get('index', ['uses'=>'AdminController@index'])->name('ad_index');

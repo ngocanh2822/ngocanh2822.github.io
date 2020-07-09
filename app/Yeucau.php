@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Yeucau extends Model
 {
+<<<<<<< HEAD
     //
     protected $table = 'yeucau';
     public $timestampt = false;
@@ -15,4 +16,9 @@ class Yeucau extends Model
     public function hoanthanh($id){
     	$this->where('id',$id)->update(['trangthai'=>0]);
     }
+=======
+    protected $table = 'yeucau';
+    protected $timestampt = false;
+    protected $fillable =['ID_chucnang','noidung','sdt','ghichu','ID_user','trangthai'];
+>>>>>>> a6f0899b25864bf063472d05b7731f6a451a222c
 }
