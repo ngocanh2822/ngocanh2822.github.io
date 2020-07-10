@@ -58,7 +58,7 @@ class AdminController extends Controller
                 $pw_new = bcrypt($pw_new);
                 $array = array('name'=>$name,'email'=>$email,'password'=>$pw_new);
                 $user->update_admin($id,$array);
-                //Auth::attempt(['name'=>$name,'password'=>$pw_confirm]);
+                Auth::attempt(['name'=>$name,'password'=>$pw_confirm]);
                 Alert::success('Complete','Đã lưu');
                 return redirect()->back();
             }
@@ -68,7 +68,7 @@ class AdminController extends Controller
             }
         }
         else{
-            $array = array('name'=>$name,'email'=>$email);
+                $array = array('name'=>$name,'email'=>$email);
                 $user->update_admin($id,$array);
                 Alert::success('Complete','Đã lưu');
                 return redirect()->back();

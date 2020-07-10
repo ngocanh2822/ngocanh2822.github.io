@@ -45,68 +45,7 @@
 				        </td>
 	    			</tr>
 	    			<tr>
-	    				<td colspan="2">
-		    				<div class="row" id="flike" style="border: 1px solid gray; padding: 1%;margin-bottom: 1%;display: none;">
-		    					<div class="tittle">Giá tiền mỗi tương tác Like là: 30 coin/1 Like</div>
-		    					<div class="col-12 col-md-6" style="height: auto; width: 100%;">
-						        	<p class="bold" style="margin-bottom: 0;">Số lượng like nhỏ nhất cần tăng mỗi bài viết:</p>
-						        	<input type="number" id="minlike" name="minlike" min="40" value="40">
-						        </div>
-						        <div class="col-12 col-md-6" style="height: auto; width: 100%;">
-						        	<p class="bold" style="margin-bottom: 0;">Số lượng like lớn nhất cần tăng mỗi bài viết:</p>
-						        	<input type="number" id="maxlike" name="maxlike" min="50" value="50">
-						        </div>
-						    </div>
-
-						    <div class="row" id="flove" style="border: 1px solid gray; padding: 1%; margin-bottom: 1%;display: none;">
-		    					<div class="tittle">Giá tiền mỗi tương tác Love là: 80 coin/1 Love</div>
-		    					<div class="col-12 col-md-6" style="height: auto; width: 100%;">
-						        	<p class="bold" style="margin-bottom: 0;">Số lượng like nhỏ nhất cần tăng mỗi bài viết:</p>
-						        	<input type="number" id="minlove" name="minlove" min="40" value="40">
-						        </div>
-						        <div class="col-12 col-md-6" style="height: auto; width: 100%;">
-						        	<p class="bold" style="margin-bottom: 0;">Số lượng like lớn nhất cần tăng mỗi bài viết:</p>
-						        	<input type="number" id="maxlove" name="maxlove" min="50" value="50">
-						        </div>
-						    </div>
-
-						    <div class="row" id="fhaha" style="border: 1px solid gray; padding: 1%; margin-bottom: 1%;display: none;">
-		    					<div class="tittle">Giá tiền mỗi tương tác Haha là: 80 coin/1 Haha</div>
-		    					<div class="col-12 col-md-6" style="height: auto; width: 100%;">
-						        	<p class="bold" style="margin-bottom: 0;">Số lượng like nhỏ nhất cần tăng mỗi bài viết:</p>
-						        	<input type="number" id="minhaha" name="minhaha" min="40" value="40">
-						        </div>
-						        <div class="col-12 col-md-6" style="height: auto; width: 100%;">
-						        	<p class="bold" style="margin-bottom: 0;">Số lượng like lớn nhất cần tăng mỗi bài viết:</p>
-						        	<input type="number" id="maxhaha" name="maxhaha" min="50" value="50">
-						        </div>
-						    </div>
-
-						    <div class="row" id="fwow" style="border: 1px solid gray; padding: 1%; margin-bottom: 1%;display: none;">
-		    					<div class="tittle">Giá tiền mỗi tương tác Wow là: 80 coin/1 Wow</div>
-		    					<div class="col-12 col-md-6" style="height: auto; width: 100%;">
-						        	<p class="bold" style="margin-bottom: 0;">Số lượng like nhỏ nhất cần tăng mỗi bài viết:</p>
-						        	<input type="number" id="minwow" name="minwow" min="40" value="40">
-						        </div>
-						        <div class="col-12 col-md-6" style="height: auto; width: 100%;">
-						        	<p class="bold" style="margin-bottom: 0;">Số lượng like lớn nhất cần tăng mỗi bài viết:</p>
-						        	<input type="number" id="maxwow" name="maxwow" min="50" value="50">
-						        </div>
-						    </div>
-
-						    <div class="row" id="fsad" style="border: 1px solid gray; padding: 1%; margin-bottom: 1%;display: none;">
-		    					<div class="tittle">Giá tiền mỗi tương tác Sad là: 80 coin/1 Sad</div>
-		    					<div class="col-12 col-md-6" style="height: auto; width: 100%;">
-						        	<p class="bold" style="margin-bottom: 0;">Số lượng like nhỏ nhất cần tăng mỗi bài viết:</p>
-						        	<input type="number" id="minsad" name="minsad" min="40" value="40">
-						        </div>
-						        <div class="col-12 col-md-6" style="height: auto; width: 100%;">
-						        	<p class="bold" style="margin-bottom: 0;">Số lượng like lớn nhất cần tăng mỗi bài viết:</p>
-						        	<input type="number" id="maxsad" name="maxsad" min="50" value="50">
-						        </div>
-						    </div>
-
-						</td>
+	    				<td colspan="2" id="vipcontent"></td>
 	    			</tr>
 	    			<tr>
 	    				<td colspan="2">
@@ -172,40 +111,7 @@
 <!---------hết phần ghi chú mở rộng---------->
 	</div>
 </div>
+<script src="{{asset('jquery/vipreaction.js')}}"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-	let thanhtien=0;
-	let mlike=0;
-	$('.emotion').on('click', function(){
-		let id = this.id;	
-		let tam = id;
-			if ($('#'+tam).attr('clicked') == 'no')
-			{
-				$('#'+tam).css('transform','scale(1.2)');
-				$('#camxuc'+tam).html('<input type="text" name="camxuc'+tam+'" value="'+tam+' " hidden="true" >');
-				$('#'+tam).attr('clicked', 'ok');
-				$('#f'+tam).css('display', 'flex');
-				maxlike = $('#max'+tam).val();
-				if(tam == 'like' )
-				{
-					dongia=30;
-				} else dongia=80;
-				kq=$('#max'+tam).val()*dongia*$('#slbai').val()*$('#slngay').val();
-				thanhtien = thanhtien + kq;
-			}
-			else if ($('#'+tam).attr('clicked') == 'ok')
-			{
-				$('#'+tam).css('transform','scale(1)');
-				$('#'+tam).attr('clicked', 'no');
-				$('#f'+tam).css('display', 'none');
-				if(tam == 'like' )
-				{
-					dongia=30;
-				} else dongia=80;
-				kq=$('#max'+tam).val()*dongia*$('#slbai').val()*$('#slngay').val();
-				thanhtien = thanhtien - kq;
-			}
-		$('.thanhtoan').html(thanhtien);
-	});
-</script>
+
 @endsection

@@ -42,11 +42,7 @@
                   <form class="user" action="{{route('checklogin')}}" method="post">
                     @csrf
                     <div class="form-group">
-<<<<<<< HEAD
-                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Tên đăng nhập" name="name" required="" value="{{old('email')}}">
-=======
                       <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Tên đăng nhập" name="name" required="" value="{{old('name')}}">
->>>>>>> 5656ed3cc9ea68db7139eb38309d351fb9659870
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mật khẩu" name="password" required="">
