@@ -71,7 +71,11 @@ background-color: #E49459;
 </style>
 <div class="wrapper">
 	<h6 style="text-align: center; padding-top: 1%; color: blue;font-weight: bold;font-size: 2rem;">
+<<<<<<< HEAD
 		Xin chào: {{auth::user()->name}}
+=======
+		Xin chào: {{auth::user()->email}}
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
 	</h6>
 		<hr>
 	<div class="row">
@@ -84,17 +88,25 @@ background-color: #E49459;
 	    			<tr>
 				        <td class="short bold ">Tên tài khoản</td>
 				        <td>
+<<<<<<< HEAD
 				        	<input class="form-control giancach" type="text" value="{{auth::user()->name}}">
+=======
+				        	<input class="form-control giancach" type="text" value="{{auth::user()->email}}">
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
 				        	
 				        </td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Họ và tên</td>
+<<<<<<< HEAD
 				        <td><input class="form-control giancach" type="text" name="hoten" placeholder="Nhập họ và tên" value="{{auth::user()->hoten}}"></td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Địa chỉ email</td>
 				        <td><input class="form-control giancach" type="text" name="email" placeholder="Nhập địa chỉ email" value="{{auth::user()->email}}"></td>
+=======
+				        <td><input class="form-control giancach" type="text" name="hoten" placeholder="Nhập họ và tên" value="{{auth::user()->name}}"></td>
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Số điện thoai</td>
@@ -106,7 +118,11 @@ background-color: #E49459;
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Mật khẩu cũ</td>
+<<<<<<< HEAD
 				        <td><input class="form-control giancach" type="password" name="mkc" placeholder="Nhập mật khẩu cũ" value="{{old('mkc')}}"></td>
+=======
+				        <td><input class="form-control giancach" type="text" name="mkc" placeholder="Nhập mật khẩu cũ" value="{{old('mkc')}}"></td>
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Mật khẩu mới</td>

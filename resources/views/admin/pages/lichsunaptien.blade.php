@@ -16,7 +16,11 @@
                   <thead>
                     <tr>
                       <th>STT</th>
+<<<<<<< HEAD
                       <th>Admin nạp</th>
+=======
+                      <th>Người nạp</th>
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
                       <th>Tài khoản nạp</th>
                       <th>Nội dung</th>
                       <th>Số tiền</th>
@@ -24,12 +28,19 @@
                     </tr>
                   </thead>
                   <tbody>
+<<<<<<< HEAD
+=======
+                    <?php 
+                    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                    $i=1 + ($page-1)*10;?>
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
                   	@foreach($lichsu as $row)
                     <tr>
                       <td>{{$i}}</td>
                       <td>{{$row->ID_admin}}</td>
                       <td>{{$row->ID_user}}</td>
                       <td><?php echo $row->noidung?></td>
+<<<<<<< HEAD
                       <td>
                         <?php 
                               $user_money = $row->sotien;
@@ -43,6 +54,9 @@
                               }
                         ?>
                         {{$user_money}} coin</td>
+=======
+                      <td>{{$row->sotien}}</td>
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
                       <td>{{$row->thoigian}}</td>
                     </tr>
                     <?php $i++?>

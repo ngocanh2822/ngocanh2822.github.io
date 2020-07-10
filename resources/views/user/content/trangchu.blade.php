@@ -288,6 +288,7 @@
         $money = substr($money, 0, $l) . "." . substr($money, $l);
       }
     }
+<<<<<<< HEAD
     $j = 0;
 	$napthang = 0;
     foreach ($lichsu as $row) 
@@ -321,6 +322,8 @@
         $tongnap = substr($tongnap, 0, $l) . "." . substr($tongnap, $l);
       }
     }
+=======
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
   ?>
 			<h6>BÁO CÁO</h6>
 			<div class="row">

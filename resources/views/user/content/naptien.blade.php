@@ -74,7 +74,11 @@ Chi nhánh: Hà Nội</pre>
 		<div class="col-12 stk">
 
 			<h4>NỘI DUNG CHUYỂN KHOẢN</h4> 
+<<<<<<< HEAD
 			<h4 style=" text-align: center;">"CKGD: {{auth::user()->name}}"</h4>
+=======
+			<h4 style=" text-align: center;">{{auth::user()->email}}</h4>
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
 		</div>
 		</div>
 	</div>

@@ -37,7 +37,11 @@
 	    			</tr>
 	    			<tr>
 				        <td class="short bold"></td>
+<<<<<<< HEAD
 				        <td colspan="2" style="text-align: center;"><button class="btn tientrinh" type="submit">Gửi yêu cầu</button></td>
+=======
+				        <td style="text-align: center;"><button class="btn" type="submit">Gửi yêu cầu</button></td>
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
 	    			</tr>
 				</table>
 </form>

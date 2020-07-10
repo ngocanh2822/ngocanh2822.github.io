@@ -89,7 +89,12 @@
 				        </td>
 	    			</tr>
 	    			<tr>
+<<<<<<< HEAD
 				        <td colspan="2" style="text-align: center;"><button class="btn tientrinh" type="submit">Tạo tiến trình</button></td>
+=======
+				        <td class="short bold">Hành động</td>
+				        <td style="text-align: center;"><button class="btn" type="submit">Tạo tiến trình</button></td>
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
 	    			</tr>
 				</table>
 </form>
