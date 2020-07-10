@@ -278,3 +278,18 @@ table{
 	border-radius: 5px;
 	color: #8F0A10;
 }
+.tittle{
+	width: 100%;
+	text-align: center;
+	color: red;
+	font-size: 1.1rem;
+	font-weight: bold;
+
+}
+.tientrinh{
+	font-size: 1.5rem !important;
+	background-color: #0E6E92;
+	padding: 2% !important;
+	width: 200px !important;
+	border-radius: 10px !important;
+}

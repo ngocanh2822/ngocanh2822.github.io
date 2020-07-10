@@ -74,7 +74,7 @@ Chi nhánh: Hà Nội</pre>
 		<div class="col-12 stk">
 
 			<h4>NỘI DUNG CHUYỂN KHOẢN</h4> 
-			<h4 style=" text-align: center;">{{auth::user()->email}}</h4>
+			<h4 style=" text-align: center;">"CKGD: {{auth::user()->name}}"</h4>
 		</div>
 		</div>
 	</div>
@@ -104,16 +104,57 @@ Chi nhánh: Hà Nội</pre>
 	<div class="col-12 " >
 		<div class="col-12 lichsu" style="margin-bottom: 1%;" >
 			<h6 style="text-align: center; padding-top: 1%;font-weight: bold;font-size: 1rem;">LỊCH SỬ NẠP TIỀN</h6><hr>
-			<table border="1">
-				<tr >
-					<td >STT</td>
-					<td >Thời gian</td>
-					<td >Số tiền</td>
-					<td >Trạng thái</td>
-				</tr>
-			</table>
+
+<div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                    	<th>STT</th>
+                      <th>Nội dung</th>
+                      <th>Số tiền</th>
+                      <th>Thời gian nạp</th>
+                      <th>Trạng thái</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  	<?php 
+	                    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+	                    $i=1 + ($page-1)*10;
+					?>
+                  	@foreach($lichsu as $row)
+                    <tr>
+                    	<td>{{$i}}</td>
+                    	 <?php $i= $i+1;?>
+                      <td>{{$row->noidung}}</td>
+                      <td>
+                        <?php 
+                              $user_money = $row->sotien;
+                              $j = 0;
+                              $n = strlen($user_money)-1;
+                              for ($l=$n; $l >=0; $l--) { 
+                                  $j++;
+                                  if ($j%3 == 0 && $j != $n+1) {
+                                      $user_money = substr($user_money, 0, $l) . "." . substr($user_money, $l);
+                                  }
+                              }
+                        ?>
+                        {{$user_money}} coin</td>
+                      <td>{{$row->thoigian}}</td>
+                      <td>Thành công</td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+                {{$lichsu->links()}}
+              </div>
+            </div>
+          </div>
+
 		</div>
 	</div>
+
 <!---------hết lịch sử---------->
 </div>
 @endsection

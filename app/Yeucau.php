@@ -7,8 +7,18 @@ use DB;
 use Auth;
 class Yeucau extends Model
 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+    protected $table = 'yeucau';
+    protected $fillable =['ID_chucnang','noidung','sdt','ghichu','ID_user','trangthai'];
+=======
+<<<<<<< HEAD
+>>>>>>> 5656ed3cc9ea68db7139eb38309d351fb9659870
     //
     protected $table = 'yeucau';
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
     public $timestampt = false;
     protected $fillable =['ID_chucnang','noidung','sdt','ghichu','ID_user','trangthai'];
     public function get_newlist(){
@@ -31,4 +41,16 @@ class Yeucau extends Model
         }
         return $tb;
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    
+=======
+=======
+    protected $table = 'yeucau';
+    protected $timestampt = false;
+    protected $fillable =['ID_chucnang','noidung','sdt','ghichu','ID_user','trangthai'];
+>>>>>>> a6f0899b25864bf063472d05b7731f6a451a222c
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
+>>>>>>> 5656ed3cc9ea68db7139eb38309d351fb9659870
 }

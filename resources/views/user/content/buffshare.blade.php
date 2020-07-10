@@ -41,8 +41,8 @@
 	    			<tr>
 				        <td ></td>
 				        <td>
-							<i style="color:black;">Mẹo nhỏ: Hệ thống ưu tiên chạy các job giá cao trước nên nếu bạn cần gấp bạn có thể set giá job của mình cao hơn 1 vài đồng để chạy nhanh nhất có thể nhé.</i><br/>
-							<i style="color:red;">Lưu ý: Nên buff dư thêm 30 - 50% trên tổng số lượng để tránh tụt.</i>
+							<p class="nen" style="color:black;">Mẹo nhỏ: Hệ thống ưu tiên chạy các job giá cao trước nên nếu bạn cần gấp bạn có thể set giá job của mình cao hơn 1 vài đồng để chạy nhanh nhất có thể nhé.</p><br/>
+							<p class="nen"s style="color:red;">Lưu ý: Nên buff dư thêm 30 - 50% trên tổng số lượng để tránh tụt.</p>
 						</td>
 	    			</tr>
 	    			<tr>
@@ -54,7 +54,7 @@
 	    			<tr>
 				        <td ></td>
 				        <td>
-							<i style="color:red;">Giá thấp nhất: 1000 coin</i>
+							<p class="nen" style="color:red;">Giá thấp nhất: 1000 coin</p>
 						</td>
 	    			</tr>
 	    			<tr>
@@ -73,7 +73,7 @@
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Hành động</td>
-				        <td style="text-align: center;"><button class="btn" type="submit">Tạo tiến trình</button></td>
+				        <td colspan="2" style="text-align: center;"><button class="btn tientrinh" type="submit">Tạo tiến trình</button></td>
 	    			</tr>
 				</table>
 </form>

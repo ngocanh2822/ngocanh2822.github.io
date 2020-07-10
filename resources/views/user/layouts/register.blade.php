@@ -37,13 +37,26 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
+<<<<<<< HEAD
+                    <h1 class="h4 text-gray-900 mb-4">Xin chào!</h1>
+=======
                     <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
                   </div>
                   <form class="user" action="" method="post">
                     @csrf
                     <div class="form-group">
+<<<<<<< HEAD
+                      <label>Tên đăng nhập</label>
+                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Tên đăng nhập" name="name" required="" value="{{old('email')}}">
+                    </div>
+                    <div class="form-group">
+                      <label>Địa chỉ email</label>
+                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Địa chỉ email" name="email" required="" value="{{old('email')}}">
+=======
                       <label>Email address</label>
                       <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Tên đăng nhập" name="email" required="" value="{{old('email')}}">
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
                     </div>
                     <div class="form-group">
                       <label>Mật khẩu</label>
@@ -53,6 +66,10 @@
                       <label>Nhập lại mật khẩu</label>
                       <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Nhập lại mật khẩu" name="password-confirm" required="">
                     </div>
+<<<<<<< HEAD
+                    
+=======
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
                     <button type="submit" class="btn btn-primary btn-user btn-block" >ĐĂNG KÝ</button>
                   </form>
                   <hr>

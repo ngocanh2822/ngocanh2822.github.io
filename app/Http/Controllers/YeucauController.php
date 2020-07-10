@@ -76,7 +76,11 @@ class YeucauController extends Controller
         $yc = new Yeucau;
         $id = $yeucau->ID;
         $yc->hoanthanh($id);
+<<<<<<< HEAD
+        Alert::success('Complete','Đã hoàn thành.');
+=======
         Alert::success('Complete','Đã lưu');
+>>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
         return redirect()->back();
     }
 

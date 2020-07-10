@@ -58,8 +58,7 @@
 				        <td><input class="form-control" type="text" name="ghichu" placeholder="Nhập ghi chú" value="{{old('ghichu')}}"></td>
 	    			</tr>
 	    			<tr>
-				        <td class="short bold"></td>
-				        <td style="text-align: center;"><button class="btn" type="submit">Gửi yêu cầu</button></td>
+				        <td colspan="2" style="text-align: center;"><button class="btn tientrinh" type="submit">Gửi yêu cầu</button></td>
 	    			</tr>
 				</table>
 </form>

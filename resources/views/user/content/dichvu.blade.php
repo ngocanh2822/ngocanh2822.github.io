@@ -133,7 +133,6 @@ a svg{
              FACEBOOK VIP<i class="mg fa fa-caret-down" aria-hidden="true"></i>
          </a>
          <div id="target2" class="collapse">
-            <a href="vip-like-clone" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> VIP Like Clone Giá Rẻ</a>
             <a href="vip-like-month" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> VIP Like Bài Viết Tháng</a>
             <a href="vip-like-mount" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> VIP Like Bài Viết Theo Số Lượng</a>
             <a href="vip-reaction-month" class="small"><i class="fa fa-caret-right" aria-hidden="true"></i> VIP Cảm Xúc Bài Viết Tháng</a>

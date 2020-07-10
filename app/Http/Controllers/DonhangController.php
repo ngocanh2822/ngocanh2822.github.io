@@ -77,7 +77,7 @@ class DonhangController extends Controller
         //
         $dh = new Donhang;
         $dh->hoanthanh($donhang->ID);
-        Alert::success('Complete','Đã lưu');
+        Alert::success('Complete','Đã hoàn thành');
         return redirect()->back();
     }
 
