@@ -74,9 +74,7 @@ Chi nhánh: Hà Nội</pre>
 		<div class="col-12 stk">
 
 			<h4>NỘI DUNG CHUYỂN KHOẢN</h4> 
-			@foreach($info as $row)
-			<h4 style=" text-align: center;">{{$row->email}}</h4>
-			@endforeach
+			<h4 style=" text-align: center;">"{{auth::user()->name}}"</h4>
 		</div>
 		</div>
 	</div>
@@ -85,9 +83,7 @@ Chi nhánh: Hà Nội</pre>
 			<div class="col-12">
 				<div class="col-12 luuy">
 				<h6><i class="fa fa-money" style="margin-right: 2%;"></i>SỐ TIỀN HIỆN CÓ</h6>
-				@foreach($info as $row)
-				<h4 style="text-align: center;">{{$row->user_money}} VNĐ</h4>
-				@endforeach
+				<h4 style="text-align: center;">{{$user_money}} coin</h4>
 				</div>
 			</div>
 			<div class="col-12">

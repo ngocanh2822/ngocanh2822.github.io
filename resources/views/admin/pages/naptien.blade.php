@@ -19,15 +19,18 @@
                       <th>Tên</th>
                       <th>Số dư tài khoản</th>
                       <th>Nạp thêm</th>
+                      <th>Nội dung</th>
                       <th>Xác nhận</th>
                     </tr>
                   </thead>
                   <tbody>
+                    <?php 
+                    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                    $i=1 + ($page-1)*10;?>
                   	@foreach($naptien as $row)
-                    <?php $i =1?>
                     <tr>
                       <td>{{$i}}</td>
-                      <td>{{$row->email}}</td>
+                      <td>{{$row->name}}</td>
                       <td>
                         <?php 
                               $user_money = $row->user_money;
@@ -40,22 +43,25 @@
                                   }
                               }
                         ?>
-                        {{$user_money}} VNĐ</td>
-                      <td><input type="number" name="tien" class="form-control"></td>
+                        {{$user_money}} coin</td>
                       <td>
                         <form action="{{route('naptien.update',$row->id)}}" method="POST">
+                        <input type="number" name="tien" class="form-control" required="">
+
+                      </td>
+                      <td><input type="text" name="noidung" class="form-control" value="Nạp tiền vào tài khoản" required=""></td>
+                      <td>
                           @method('PUT')
                           @csrf
                           <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i></button>
                         </form>
-                        
-
                       </td>
                     </tr>
                     <?php $i++?>
                     @endforeach
                   </tbody>
                 </table>
+                {{$naptien->links()}}
               </div>
             </div>
           </div>

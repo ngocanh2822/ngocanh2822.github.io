@@ -3,7 +3,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Đơn hàng đã hoàn thành</h1>
+          <h1 class="h3 mb-2 text-gray-800">Yêu cầu</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -17,35 +17,42 @@
                     <tr>
                       <th>STT</th>
                       <th>Tên</th>
-                      <th>Loại</th>
+                      <th>Chức năng</th>
                       <th>Nội dung</th>
-                      <th>Tổng tiền</th>
-                      <th>Thời gian hoàn thành</th>
+                      <th>SĐT</th>
                       <th>Ghi chú</th>
+                      <th>Thời gian</th>
+                      <th>Hoàn thành</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php 
                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                     $i=1 + ($page-1)*10;?>
-                  	@foreach($donhang as $row)
+                  	@foreach($datas as $row)
                     <tr>
                       <td>{{$i}}</td>
-                      <td>{{$row->ID_user}}</td>
+                      <td>{{$row->name}}</td>
                       <td>{{$row->chucnang_name}}</td>
-                      <td><?php echo $row->noidung?></td>
-                      <td>{{$row->tongtien}}</td>
-                      <td>{{$row->updated_at}}</td>
+                      <td>{{$row->noidung}}</td>
+                      <td>{{$row->sdt}}</td>
                       <td>{{$row->ghichu}}</td>
-                    </tr>
+                      <td>{{$row->updated_at}}</td>
+                      <td>
+                        <form action="{{route('yeucau.update',$row->ID)}}" method="POST">
+                          @method('PUT')
+                          @csrf
+                          <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i></button>
+                        </form>
+                      </td>
                     <?php $i++?>
                     @endforeach
                   </tbody>
                 </table>
-                {{$donhang->links()}}
+                {{$datas->links()}}
               </div>
             </div>
           </div>
-
+         
         </div>
 @endsection

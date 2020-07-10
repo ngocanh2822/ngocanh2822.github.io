@@ -71,9 +71,7 @@ background-color: #E49459;
 </style>
 <div class="wrapper">
 	<h6 style="text-align: center; padding-top: 1%; color: blue;font-weight: bold;font-size: 2rem;">
-	@foreach($info as $row)
-		Xin chào: {{$row->email}}
-	@endforeach
+		Xin chào: {{auth::user()->name}}
 	</h6>
 		<hr>
 	<div class="row">
@@ -85,26 +83,30 @@ background-color: #E49459;
 				<table border="0">
 	    			<tr>
 				        <td class="short bold ">Tên tài khoản</td>
-				        <td>@foreach($info as $row)
-				        	<input class="form-control giancach" type="text" value="{{$row->email}}">
-				        	@endforeach
+				        <td>
+				        	<input class="form-control giancach" type="text" value="{{auth::user()->name}}">
+				        	
 				        </td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Họ và tên</td>
-				        <td><input class="form-control giancach" type="text" name="hoten" placeholder="Nhập họ và tên" value="{{$row->name}}"></td>
+				        <td><input class="form-control giancach" type="text" name="hoten" placeholder="Nhập họ và tên" value="{{auth::user()->hoten}}"></td>
+	    			</tr>
+	    			<tr>
+				        <td class="short bold">Địa chỉ email</td>
+				        <td><input class="form-control giancach" type="text" name="hoten" placeholder="Nhập địa chỉ email" value="{{auth::user()->email}}"></td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Số điện thoai</td>
-				        <td><input class="form-control giancach" type="text" name="SDT" placeholder="Nhập số điện thoại" value="{{$row->user_sdt}}"></td>
+				        <td><input class="form-control giancach" type="text" name="SDT" placeholder="Nhập số điện thoại" value="{{auth::user()->user_sdt}}"></td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Link Facebook</td>
-				        <td><input class="form-control giancach" type="text" name="fbid" placeholder="Nhập link Facebook" value="{{$row->user_fbid}}"></td>
+				        <td><input class="form-control giancach" type="text" name="fbid" placeholder="Nhập link Facebook" value="{{auth::user()->user_fbid}}"></td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Mật khẩu cũ</td>
-				        <td><input class="form-control giancach" type="text" name="mkc" placeholder="Nhập mật khẩu cũ"></td>
+				        <td><input class="form-control giancach" type="text" name="mkc" placeholder="Nhập mật khẩu cũ" value="{{old('mkc')}}"></td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Mật khẩu mới</td>
@@ -127,10 +129,7 @@ background-color: #E49459;
 			<div class="col-12">
 				<div class="col-12 luuy">
 				<h6><i class="fa fa-dollar" style="margin-right: 2%;"></i>SỐ DƯ TÀI KHOẢN</h6>
-				@foreach($info as $row)
-				<h5 style="text-align: center;">{{$row->user_money}} VNĐ</h5>
-				@endforeach
-				<p style="text-align: center;"><i>LƯU Ý:Tài khoản của bạn phải có ít nhất 50K mới có thể kích hoạt order!</i></p>
+				<h5 style="text-align: center;">{{$user_money}} coin</h5>
 				</div>
 			</div>
 			<div class="col-12 " >

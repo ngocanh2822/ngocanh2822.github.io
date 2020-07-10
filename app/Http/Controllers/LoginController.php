@@ -10,14 +10,14 @@ use App\User;
 class LoginController extends Controller
 {
     public function checklogin(Request $rq){
-    	$email = $rq->email;
+    	$name = $rq->name;
     	$password = $rq->password;
-    	if (Auth::attempt(['email'=>$email,'password'=>$password])) {
+    	if (Auth::attempt(['name'=>$name,'password'=>$password])) {
             if(Auth::user()->level==1){
                 return redirect()->route('donhang.index');
             }
     		else{
-                return redirect()->route('index'); 
+                return redirect()->route('dichvu'); 
             }
     	}
     	else{
@@ -27,6 +27,6 @@ class LoginController extends Controller
     }
     public function logout(){
     	Auth::logout();
-    	return redirect()->route('login');
+    	return redirect()->route('index');
     }
 }

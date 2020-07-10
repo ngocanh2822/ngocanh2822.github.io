@@ -156,6 +156,7 @@
 	$fb = array();
 	$fv = array();
 	$ib = array();
+	$kh = array();
 	foreach ($chucnang as $row) 
 	{
 		if($row->ID_type=="1")
@@ -187,6 +188,16 @@
 			$tam->ghichu = $row->chucnang_ghichu;
 			$tam->href = $row->href;
 			array_push($ib,$tam);
+		}
+		if($row->ID_type=="4")
+		{
+			$tam = new chucnang;
+			$tam->id = $row->ID_chucnang;
+			$tam->ten = $row->chucnang_name;
+			$tam->loai = $row->ID_type;
+			$tam->ghichu = $row->chucnang_ghichu;
+			$tam->href = $row->href;
+			array_push($kh,$tam);
 		}
 		
 	}
@@ -232,6 +243,18 @@
 				</div>
 				@endforeach
 			</div>
+			<h6>KHÁC</h6>
+			<div class="row">
+				@foreach($kh as $row)
+				<div class="col-md-6 ">
+					<a href="{{$row->href}}">
+					<div class="col-md-12 chucnang-chitiet-ib">
+						{{$row->ten}}
+					</div>
+					</a>	
+				</div>
+				@endforeach
+			</div>
 			
 		</div>
 <!------------>
@@ -253,6 +276,19 @@
 			</div>
 <!------------>
 <!-----báo cáo số dư------->
+<?php
+    $money = Auth::user()->user_money;
+    $j = 0;
+    $n = strlen($money)-1;
+    for ($l=$n; $l >=0; $l--) 
+    { 
+      $j++;
+      if ($j%3 == 0 && $j != $n+1) 
+      {
+        $money = substr($money, 0, $l) . "." . substr($money, $l);
+      }
+    }
+  ?>
 			<h6>BÁO CÁO</h6>
 			<div class="row">
 				<div class="col-4">
@@ -260,7 +296,7 @@
 						<div class="col-md-12 sodu">
 							<div class="col-12 ma">
 								<h6><i class="fa fa-dollar"></i></h6>
-								<h6>SỐ DƯ</h6><h6>0</h6>
+								<h6>SỐ DƯ</h6><h6>{{$money}} coin</h6>
 							</div>
 						</div>
 					</a>

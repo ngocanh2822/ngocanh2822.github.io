@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Users;
-use App\Naptien;
+use App\Yeucau;
 use Illuminate\Http\Request;
 use Alert;
-use Auth;
-class NaptienController extends Controller
+class YeucauController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,10 @@ class NaptienController extends Controller
      */
     public function index()
     {
-        $user = new Users;
-        $naptien = $user->get_userlist();
-        return view('admin.pages.naptien',compact('naptien'));
+        //
+        $yeucau = new Yeucau;
+        $datas = $yeucau->get_newlist();
+        return view('admin.pages.yeucau',compact('datas'));
     }
 
     /**
@@ -45,10 +44,10 @@ class NaptienController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Users  $users
+     * @param  \App\Yeucau  $yeucau
      * @return \Illuminate\Http\Response
      */
-    public function show(Users $users)
+    public function show(Yeucau $yeucau)
     {
         //
     }
@@ -56,10 +55,10 @@ class NaptienController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Users  $users
+     * @param  \App\Yeucau  $yeucau
      * @return \Illuminate\Http\Response
      */
-    public function edit(Users $users)
+    public function edit(Yeucau $yeucau)
     {
         //
     }
@@ -68,37 +67,26 @@ class NaptienController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Users  $users
+     * @param  \App\Yeucau  $yeucau
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Users $users,$naptien)
+    public function update(Request $request, Yeucau $yeucau)
     {
         //
-        $nt = new Naptien;
-        $us = new Users;
-
-        $tiennap = $request->tien;
-        $noidung = isset($request->noidung) ? $request->noidung : 'Nạp tiền vào tài khoản';
-        if(is_null($tiennap) || $tiennap == 0){
-            Alert::error('Error','Số tiền không được để trống và phải khác 0');
-            return redirect()->back();
-        }
-        $id = $naptien;
-        
-        $us->naptien($id,$tiennap);
-
-        $nt->create($id,$tiennap,$noidung);
-        Alert::success('Complete','Đã nạp');
+        $yc = new Yeucau;
+        $id = $yeucau->ID;
+        $yc->hoanthanh($id);
+        Alert::success('Complete','Đã hoàn thành.');
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Users  $users
+     * @param  \App\Yeucau  $yeucau
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Users $users)
+    public function destroy(Yeucau $yeucau)
     {
         //
     }

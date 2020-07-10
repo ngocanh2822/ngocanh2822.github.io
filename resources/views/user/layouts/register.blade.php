@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Dịch vụ FB - Đăng nhập</title>
+  <title>Dịch vụ FB - Đăng ký tài khoản</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{asset('fonts/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -37,30 +37,28 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
                   </div>
-                  <form class="user" action="{{route('checklogin')}}" method="post">
+                  <form class="user" action="" method="post">
                     @csrf
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Tên đăng nhập" name="name" required="" value="{{old('name')}}">
+                      <label>Email address</label>
+                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Tên đăng nhập" name="email" required="" value="{{old('email')}}">
                     </div>
                     <div class="form-group">
+                      <label>Mật khẩu</label>
                       <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mật khẩu" name="password" required="">
                     </div>
                     <div class="form-group">
-                      <div class="custom-control custom-checkbox small">
-                        <input type="checkbox" class="custom-control-input" id="customCheck">
-                        <label class="custom-control-label" for="customCheck">Remember Me</label>
-                      </div>
+                      <label>Nhập lại mật khẩu</label>
+                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Nhập lại mật khẩu" name="password-confirm" required="">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-user btn-block" >Login</button>
+                    
+                    <button type="submit" class="btn btn-primary btn-user btn-block" >ĐĂNG KÝ</button>
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small" href="forgot-password.html">Bạn quên mật khẩu?</a>
-                  </div>
-                  <div class="text-center">
-                    Bạn chưa có tài khoản? <a class="small" href="register"> ĐĂNG KÝ NGAY <a>
+                    Bạn đã có tài khoản? <a class="small" href="login"> ĐĂNG NHẬP</a>
                   </div>
                 </div>
               </div>

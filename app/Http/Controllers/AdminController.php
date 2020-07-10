@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Donhang;
+use App\Naptien;
 use Auth;
 class AdminController extends Controller
 {
@@ -16,5 +17,10 @@ class AdminController extends Controller
     	$donhang = new Donhang;
     	$donhang = $donhang->listcomplete();
     	return view('admin.pages.hoanthanh',compact('donhang'));
+    }
+    public function lichsu(){
+        $naptien = new Naptien;
+        $lichsu = $naptien->get_newlist();
+        return view('admin.pages.lichsunaptien',compact('lichsu'));
     }
 }
