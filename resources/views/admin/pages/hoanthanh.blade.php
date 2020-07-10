@@ -16,7 +16,8 @@
                   <thead>
                     <tr>
                       <th>STT</th>
-                      <th>Tên</th>
+                      <th>Người dùng</th>
+                      <th>Người tích</th>
                       <th>Loại</th>
                       <th>Nội dung</th>
                       <th>Tổng tiền</th>
@@ -31,7 +32,8 @@
                   	@foreach($donhang as $row)
                     <tr>
                       <td>{{$i}}</td>
-                      <td>{{$row->ID_user}}</td>
+                      <td>{{$row->user}}</td>
+                      <td>{{$row->admin}}</td>
                       <td>{{$row->chucnang_name}}</td>
                       <td><?php echo $row->noidung?></td>
                       <td>{{$row->tongtien}}</td>

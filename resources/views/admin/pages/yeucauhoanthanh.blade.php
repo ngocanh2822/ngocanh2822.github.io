@@ -3,7 +3,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Yêu cầu</h1>
+          <h1 class="h3 mb-2 text-gray-800">Yêu cầu đã hoàn thành</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -16,13 +16,12 @@
                   <thead>
                     <tr>
                       <th>STT</th>
-                      <th>Tên</th>
+                      <th>Người dùng</th>
+                      <th>Người tích</th>
                       <th>Chức năng</th>
                       <th>Nội dung</th>
-                      <th>SĐT</th>
+                      <th>Thời gian tích</th>
                       <th>Ghi chú</th>
-                      <th>Thời gian</th>
-                      <th>Hoàn thành</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -32,19 +31,13 @@
                   	@foreach($datas as $row)
                     <tr>
                       <td>{{$i}}</td>
-                      <td>{{$row->name}}</td>
+                      <td>{{$row->user}}</td>
+                      <td>{{$row->admin}}</td>
                       <td>{{$row->chucnang_name}}</td>
                       <td><?php echo $row->noidung?></td>
-                      <td>{{$row->sdt}}</td>
-                      <td>{{$row->ghichu}}</td>
                       <td>{{$row->updated_at}}</td>
-                      <td>
-                        <form action="{{route('yeucau.update',$row->ID)}}" method="POST">
-                          @method('PUT')
-                          @csrf
-                          <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i></button>
-                        </form>
-                      </td>
+                      <td>{{$row->ghichu}}</td>
+                    </tr>
                     <?php $i++?>
                     @endforeach
                   </tbody>
@@ -53,6 +46,6 @@
               </div>
             </div>
           </div>
-         
+
         </div>
 @endsection

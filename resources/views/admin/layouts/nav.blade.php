@@ -18,10 +18,20 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Đơn hàng</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('listcomplete')}}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Đơn hàng hoàn thành</span></a>
+      </li>
        <li class="nav-item">
         <a class="nav-link" href="{{route('yeucau.index')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Yêu cầu</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('yeucauhoanthanh')}}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Yêu cầu hoàn thành</span></a>
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
@@ -36,11 +46,7 @@
       </li>
 
       <!-- Divider -->
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('listcomplete')}}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Đã hoàn thành</span></a>
-      </li>
+      
 
       <hr class="sidebar-divider d-none d-md-block">
 

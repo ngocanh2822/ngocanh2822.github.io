@@ -87,5 +87,12 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
     Route::resource('yeucau','YeucauController');
     Route::get('hoan-thanh',['uses'=>'AdminController@listcomplete'])->name('listcomplete');
     Route::get('lich-su',['uses'=>'AdminController@lichsu'])->name('lichsu');
+
+    Route::get('register',['uses'=>'AdminController@register'])->name('ad.register');
+    Route::post('register',['uses'=>'AdminController@new_admin'])->name('ad.new');
+
+    Route::get('setting',['uses'=>'AdminController@setting'])->name('ad.setting');
+    Route::post('update',['uses'=>'AdminController@update_admin'])->name('ad.update');
+    Route::get('yeu-cau-hoan-thanh',['uses'=>'AdminController@yeucauhoanthanh'])->name('yeucauhoanthanh');
 });
 Route::get('logout',['uses'=>'LoginController@logout'])->name('ad_logout');

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Auth;
+use DB;
 class Naptien extends Model
 {
     //
@@ -18,6 +19,16 @@ class Naptien extends Model
     	$this->insert(['ID_user'=>$ID_user,'ID_admin'=>$idnap,'sotien'=>$sotien,'noidung'=>$noidung,'thang'=>$thang,'nam'=>$nam,'thoigian'=>$thoigian]);
     }
     public function get_newlist(){
-    	return $this->orderBy('thoigian','DESC')->paginate(10);
+    	$list = $this->orderBy('thoigian','DESC')->paginate(10);
+        $i = 0;
+        foreach ($list as $row) {
+            $list[$i] = $row;
+            $admin = DB::table('users')->select('users.name')->where('id',$row->ID_admin)->first();
+            $list[$i]->admin = $admin->name;
+            $user = DB::table('users')->select('users.name')->where('id',$row->ID_user)->first();
+            $list[$i]->user = $user->name;
+            $i++;
+        }
+        return $list;
     }
 }

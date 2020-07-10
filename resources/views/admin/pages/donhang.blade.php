@@ -34,7 +34,7 @@
                     <tr>
                       <td>{{$i}}</td>
                       <?php $i= $i+1;?>
-                      <td>{{$row->ID_user}}</td>
+                      <td>{{$row->name}}</td>
                       <td>{{$row->chucnang_name}}</td>
                       <td><?php echo $row->noidung?></td>
                       <td>{{$row->tongtien}}</td>

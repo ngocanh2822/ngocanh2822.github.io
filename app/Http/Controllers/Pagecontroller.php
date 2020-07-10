@@ -37,6 +37,12 @@ class Pagecontroller extends Controller
     }
     function getRegister()
     {
+        if (Auth::check() && Auth::user()->level==0) {
+            return redirect()->route('dichvu');
+        }
+        if (Auth::check() && Auth::user()->level==1) {
+            return redirect()->route('donhang.index');
+        }
         return view("user.layouts.register");
     }
     // function postLogin()

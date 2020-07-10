@@ -30,8 +30,8 @@
                   	@foreach($lichsu as $row)
                     <tr>
                       <td>{{$i}}</td>
-                      <td>{{$row->ID_admin}}</td>
-                      <td>{{$row->ID_user}}</td>
+                      <td>{{$row->admin}}</td>
+                      <td>{{$row->user}}</td>
                       <td><?php echo $row->noidung?></td>
                       <td>{{$row->sotien}}</td>
                       <td>{{$row->thoigian}}</td>

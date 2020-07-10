@@ -30,7 +30,7 @@
                   	@foreach($naptien as $row)
                     <tr>
                       <td>{{$i}}</td>
-                      <td>{{$row->email}}</td>
+                      <td>{{$row->name}}</td>
                       <td>
                         <?php 
                               $user_money = $row->user_money;
