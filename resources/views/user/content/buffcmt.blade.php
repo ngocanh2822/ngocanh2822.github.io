@@ -81,8 +81,7 @@
 				        </td>
 	    			</tr>
 	    			<tr>
-				        <td class="short bold">Hành động</td>
-				        <td style="text-align: center;"><button class="btn" type="submit">Tạo tiến trình</button></td>
+				        <td colspan="2" style="text-align: center;"><button class="btn tientrinh" type="submit">Tạo tiến trình</button></td>
 	    			</tr>
 				</table>
 </form>

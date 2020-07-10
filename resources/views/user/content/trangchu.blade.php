@@ -288,6 +288,39 @@
         $money = substr($money, 0, $l) . "." . substr($money, $l);
       }
     }
+    $j = 0;
+	$napthang = 0;
+    foreach ($lichsu as $row) 
+    {
+    	if($row->thang == date("m"))
+    	{
+    		$napthang = $napthang + $row->sotien;
+    	}
+    }
+    $n = strlen($napthang)-1;
+    for ($l=$n; $l >=0; $l--) 
+    { 
+      $j++;
+      if ($j%3 == 0 && $j != $n+1) 
+      {
+        $napthang = substr($napthang, 0, $l) . "." . substr($napthang, $l);
+      }
+    }
+    $j = 0;
+    $tongnap = 0;
+    foreach ($lichsu as $row) 
+    {
+    	$tongnap = $tongnap + $row->sotien;
+    }
+    $n = strlen($tongnap)-1;
+    for ($l=$n; $l >=0; $l--) 
+    { 
+      $j++;
+      if ($j%3 == 0 && $j != $n+1) 
+      {
+        $tongnap = substr($tongnap, 0, $l) . "." . substr($tongnap, $l);
+      }
+    }
   ?>
 			<h6>BÁO CÁO</h6>
 			<div class="row">
@@ -306,7 +339,7 @@
 						<div class="col-md-12 sodu">
 							<div class="col-12 ma">
 								<h6><i class="fa fa-history"></i></h6>
-								<h6>NẠP THÁNG NÀY</h6><h6>0</h6>
+								<h6>NẠP THÁNG NÀY</h6><h6>{{$napthang}}</h6>
 							</div>
 						</div>
 					</a>
@@ -316,7 +349,7 @@
 						<div class="col-md-12 sodu">
 							<div class="col-12 ma">
 								<h6><i class="fa fa-download"></i></h6>
-								<h6>TỔNG NẠP</h6><h6>0</h6>
+								<h6>TỔNG NẠP</h6><h6>{{$tongnap}}</h6>
 							</div>
 						</div>
 					</a>

@@ -37,13 +37,17 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Xin chào!</h1>
                   </div>
                   <form class="user" action="" method="post">
                     @csrf
                     <div class="form-group">
-                      <label>Email address</label>
-                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Tên đăng nhập" name="email" required="" value="{{old('email')}}">
+                      <label>Tên đăng nhập</label>
+                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Tên đăng nhập" name="name" required="" value="{{old('email')}}">
+                    </div>
+                    <div class="form-group">
+                      <label>Địa chỉ email</label>
+                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Địa chỉ email" name="email" required="" value="{{old('email')}}">
                     </div>
                     <div class="form-group">
                       <label>Mật khẩu</label>

@@ -4,15 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Type_chucnang;
-use App\Muaban;
-use App\Ripnick;
-use App\Doiten;
-use App\Baomat;
 use App\Users;
 use App\User;
 use Carbon\Carbon;
 use App\Donhang;
 use App\Yeucau;
+use App\Naptien;
 use Auth;
 Use Alert;
 class Pagecontroller extends Controller
@@ -46,12 +43,21 @@ class Pagecontroller extends Controller
     // }
     function getDichvu()
     {
+        $id = Auth::user()->id;
     	$chucnang = Type_chucnang::all();
-    	return view("user.content.trangchu",compact('chucnang'));
+        $lichsu = Naptien::where('ID_user',$id)->orderBy('thoigian','desc')->get();
+    	return view("user.content.trangchu",compact('chucnang','lichsu'));
     }
-
+    function getuserhistory()
+    {
+        $id = Auth::user()->id;
+        $donhang = Donhang::where('ID_user',$id)->orderBy('thoigianorder','desc')->paginate(10);
+        $chucnang = Type_chucnang::all();
+        return view("user.content.lichsu",compact('donhang','chucnang'));
+    }
     function getuserpayment()
     {
+        $id = Auth::user()->id;
         $user_money = Auth::user()->user_money;  
         $j = 0;
             $n = strlen($user_money)-1;
@@ -61,7 +67,8 @@ class Pagecontroller extends Controller
                     $user_money = substr($user_money, 0, $l) . "." . substr($user_money, $l);
                 }
             }
-        return view("user.content.naptien",compact('user_money'));
+        $lichsu = Naptien::where('ID_user',$id)->orderBy('thoigian','desc')->paginate(10);
+        return view("user.content.naptien",compact('user_money','lichsu'));
     }
     function getTaikhoan()
     {
@@ -679,5 +686,9 @@ class Pagecontroller extends Controller
             return redirect()->back()->withInput();
         }
 
+    }
+    function vipreactionmonth()
+    {
+        return view("user.content.vipreactionmonth");
     }
 }

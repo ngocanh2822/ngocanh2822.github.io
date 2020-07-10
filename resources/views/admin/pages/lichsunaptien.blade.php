@@ -24,9 +24,6 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php 
-                    $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                    $i=1 + ($page-1)*10;?>
                   	@foreach($lichsu as $row)
                     <tr>
                       <td>{{$i}}</td>

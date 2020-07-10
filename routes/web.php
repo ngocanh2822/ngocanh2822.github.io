@@ -23,6 +23,8 @@ Route::group(['middleware'=>'user'],function ()
 
 	Route::get('dich-vu',['uses'=>'Pagecontroller@getDichvu'])->name('dichvu');
 
+	Route::get('user-history',['uses'=>'Pagecontroller@getuserhistory']);
+
 	Route::get('tai-khoan',['uses'=>'Pagecontroller@getTaikhoan']);
 	Route::post('tai-khoan',['uses'=>'Pagecontroller@postTaikhoan'])->name('post_taikhoan');
 
@@ -73,6 +75,7 @@ Route::group(['middleware'=>'user'],function ()
 	Route::get('vip-comment-month',['uses'=>'Pagecontroller@vipcmtmonth']);
 	Route::post('vip-comment-month',['uses'=>'Pagecontroller@postvipcmtmonth'])->name('post_vipcmtmonth');
 
+	Route::get('vip-reaction-month',['uses'=>'Pagecontroller@vipreactionmonth']);
 });
 // admin
 Route::get('register',['uses'=>'Pagecontroller@getRegister'])->name('register');

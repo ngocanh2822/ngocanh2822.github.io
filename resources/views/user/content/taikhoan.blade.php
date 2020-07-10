@@ -94,7 +94,7 @@ background-color: #E49459;
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Địa chỉ email</td>
-				        <td><input class="form-control giancach" type="text" name="hoten" placeholder="Nhập địa chỉ email" value="{{auth::user()->email}}"></td>
+				        <td><input class="form-control giancach" type="text" name="email" placeholder="Nhập địa chỉ email" value="{{auth::user()->email}}"></td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Số điện thoai</td>
@@ -106,15 +106,15 @@ background-color: #E49459;
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Mật khẩu cũ</td>
-				        <td><input class="form-control giancach" type="text" name="mkc" placeholder="Nhập mật khẩu cũ" value="{{old('mkc')}}"></td>
+				        <td><input class="form-control giancach" type="password" name="mkc" placeholder="Nhập mật khẩu cũ" value="{{old('mkc')}}"></td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Mật khẩu mới</td>
-				        <td><input class="form-control giancach" type="text" name="mkm1" placeholder="Nhập mật khẩu mới"></td>
+				        <td><input class="form-control giancach" type="password" name="mkm1" placeholder="Nhập mật khẩu mới"></td>
 	    			</tr>
 	    			<tr>
 				        <td class="short bold">Xác nhận mật khẩu mới</td>
-				        <td><input class="form-control giancach" type="text" name="mkm2" placeholder="Xác nhận mật khẩu mới"></td>
+				        <td><input class="form-control giancach" type="password" name="mkm2" placeholder="Xác nhận mật khẩu mới"></td>
 	    			</tr>
 	    			<tr>
 	    				<td></td>
@@ -136,6 +136,13 @@ background-color: #E49459;
 				<a href="user-payment">
 				<div class="col-12 nap">
 					<h6><i class="fa fa-briefcase" style="margin-right: 2%;"></i>NẠP TIỀN</h6>
+				</div>
+				</a>
+			</div>
+			<div class="col-12 " >
+				<a href="user-history">
+				<div class="col-12 nap">
+					<h6><i class="fa fa-history" style="margin-right: 2%;"></i>LỊCH SỬ</h6>
 				</div>
 				</a>
 			</div>
