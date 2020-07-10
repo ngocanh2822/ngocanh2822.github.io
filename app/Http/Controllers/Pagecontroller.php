@@ -4,22 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Type_chucnang;
-<<<<<<< HEAD
-=======
 use App\Muaban;
 use App\Ripnick;
 use App\Doiten;
 use App\Baomat;
->>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
 use App\Users;
 use App\User;
 use Carbon\Carbon;
 use App\Donhang;
 use App\Yeucau;
-<<<<<<< HEAD
 use App\Naptien;
-=======
->>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
 use Auth;
 Use Alert;
 class Pagecontroller extends Controller
@@ -67,10 +61,8 @@ class Pagecontroller extends Controller
     }
     function getuserpayment()
     {
-<<<<<<< HEAD
         $id = Auth::user()->id;
-=======
->>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
+
         $user_money = Auth::user()->user_money;  
         $j = 0;
             $n = strlen($user_money)-1;
@@ -80,12 +72,11 @@ class Pagecontroller extends Controller
                     $user_money = substr($user_money, 0, $l) . "." . substr($user_money, $l);
                 }
             }
-<<<<<<< HEAD
+
         $lichsu = Naptien::where('ID_user',$id)->orderBy('thoigian','desc')->paginate(10);
         return view("user.content.naptien",compact('user_money','lichsu'));
-=======
+
         return view("user.content.naptien",compact('user_money'));
->>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
     }
     function getTaikhoan()
     {
@@ -103,14 +94,12 @@ class Pagecontroller extends Controller
     function postTaikhoan(Request $request)
     {
         $id = Auth::user()->id;   
-<<<<<<< HEAD
+
         $name = Auth::user()->name;
         $hoten = isset($request->hoten) ? $request->hoten : Auth::user()->hoten;
         $email = isset($request->email) ? $request->email : Auth::user()->email;
-=======
         $email = Auth::user()->email;
         $name = isset($request->hoten) ? $request->hoten : Auth::user()->name;
->>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
         $user_sdt = isset($request->SDT) ? $request->SDT : Auth::user()->user_sdt;
         $user_fbid = isset($request->fbid) ? $request->fbid : Auth::user()->user_fbid;
         $mkm1=$request->mkm1;
@@ -119,7 +108,6 @@ class Pagecontroller extends Controller
         if(isset($mkc) && isset($mkm1) && isset($mkm2)) 
         {
             if($mkm1 != $mkm2)
-<<<<<<< HEAD
             {
                 Alert::error('Lỗi!', 'Mật khẩu mới và xác nhận mật khẩu mới phải giống nhau!!');
                 return redirect()->back()->withInput();
@@ -129,7 +117,8 @@ class Pagecontroller extends Controller
                 $password = bcrypt($mkm1);
                 User::where('id', $id)
                 ->update(['password'=>$password,'hoten'=>$hoten,'email'=>$email,'user_sdt'=>$user_sdt,'user_fbid'=>$user_fbid]);
-=======
+            }
+            else
             {
                 Alert::error('Lỗi!', 'Mật khẩu mới và xác nhận mật khẩu mới phải giống nhau!!');
                 return redirect()->back()->withInput();
@@ -139,7 +128,6 @@ class Pagecontroller extends Controller
                 $password = bcrypt($mkm1);
                 User::where('id', $id)
                 ->update(['password'=>$password,'name'=>$name,'user_sdt'=>$user_sdt,'user_fbid'=>$user_fbid]);
->>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
  
                 Alert::success('Thành công!', 'Lưu thay đổi thành công');
                 return redirect()->back();  
@@ -721,11 +709,9 @@ class Pagecontroller extends Controller
         }
 
     }
-<<<<<<< HEAD
     function vipreactionmonth()
     {
         return view("user.content.vipreactionmonth");
     }
-=======
->>>>>>> 14ea528931543301bec3cddc7ca7bbc1ee2b8726
+
 }
