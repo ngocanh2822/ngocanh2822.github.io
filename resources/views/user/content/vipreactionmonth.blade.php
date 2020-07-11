@@ -25,7 +25,7 @@
 
 		<div class="col-12 col-md-8 ">
 			<div class="col-12 ">
-<form action="{{route('post_viplikemonth')}}" method="post">
+<form action="{{route('post_vipreactionmonth')}}" method="post">
 	{!!csrf_field()!!}
 				<table border="0">
 	    			<tr>
@@ -41,7 +41,9 @@
 				        		<img src="media/emotion/haha.png" id ="haha" class="emotion" clicked="no">
 				        		<img src="media/emotion/wow.png" id ="wow" class="emotion" clicked="no">
 				        		<img src="media/emotion/sad.png" id ="sad" class="emotion" clicked="no">
-	    				</div>
+	    					</div>
+	    					<div id="camxuc">
+	    					</div>
 				        </td>
 	    			</tr>
 	    			<tr>

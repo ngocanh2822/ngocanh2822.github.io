@@ -51,6 +51,21 @@
 		box-shadow: 5px 5px 5px #B4F058 inset;
 		font-weight: bold;
 	}
+	.chucnang-chitiet-k{
+		height: 100px;
+		background-color: #846EF1;
+		border-radius: 10px;
+		margin-top: 10px;
+		font-size: 1.2rem;
+		text-transform: uppercase;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		justify-content: center;
+		text-shadow: 2px 2px 5px black;
+		box-shadow: 5px 5px 5px #CEC5F8 inset;
+		font-weight: bold;
+	}
 	.chucnang-chitiet-fb:hover{
 		background-color: #12641F;
 	}
@@ -59,6 +74,9 @@
 	}
 	.chucnang-chitiet-ib:hover{
 		background-color: #4A6D13;
+	}
+	.chucnang-chitiet-k:hover{
+		background-color: #45368E;
 	}
 	.naptien{
 		height: 100px;
@@ -248,7 +266,7 @@
 				@foreach($kh as $row)
 				<div class="col-md-6 ">
 					<a href="{{$row->href}}">
-					<div class="col-md-12 chucnang-chitiet-ib">
+					<div class="col-md-12 chucnang-chitiet-k">
 						{{$row->ten}}
 					</div>
 					</a>	

@@ -43,7 +43,7 @@
                                   }
                               }
                         ?>
-                        {{$user_money}} VNĐ</td>
+                        {{$user_money}} coin</td>
                       <td>
                         <form action="{{route('naptien.update',$row->id)}}" method="POST">
                         <input type="number" name="tien" class="form-control" required="">

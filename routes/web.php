@@ -76,11 +76,13 @@ Route::group(['middleware'=>'user'],function ()
 	Route::post('vip-comment-month',['uses'=>'Pagecontroller@postvipcmtmonth'])->name('post_vipcmtmonth');
 
 	Route::get('vip-reaction-month',['uses'=>'Pagecontroller@vipreactionmonth']);
+	Route::post('vip-reaction-month',['uses'=>'Pagecontroller@postvipreactionmonth'])->name('post_vipreactionmonth');
 });
 // admin
 Route::get('register',['uses'=>'Pagecontroller@getRegister'])->name('register');
+Route::post('register',['uses'=>'LoginController@checkregister'])->name('checkregister');
+
 Route::get('login',['uses'=>'Pagecontroller@getLogin'])->name('login');
-	//Route::post('login',['uses'=>'Pagecontroller@postLogin'])->name('post_login');
 Route::post('checklogin',['uses'=>'LoginController@checklogin'])->name('checklogin');
 
 Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {

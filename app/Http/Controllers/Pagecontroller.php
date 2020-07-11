@@ -100,12 +100,9 @@ class Pagecontroller extends Controller
     function postTaikhoan(Request $request)
     {
         $id = Auth::user()->id;   
-
         $name = Auth::user()->name;
         $hoten = isset($request->hoten) ? $request->hoten : Auth::user()->hoten;
         $email = isset($request->email) ? $request->email : Auth::user()->email;
-        $email = Auth::user()->email;
-        $name = isset($request->hoten) ? $request->hoten : Auth::user()->name;
         $user_sdt = isset($request->SDT) ? $request->SDT : Auth::user()->user_sdt;
         $user_fbid = isset($request->fbid) ? $request->fbid : Auth::user()->user_fbid;
         $mkm1=$request->mkm1;
@@ -123,17 +120,6 @@ class Pagecontroller extends Controller
                 $password = bcrypt($mkm1);
                 User::where('id', $id)
                 ->update(['password'=>$password,'hoten'=>$hoten,'email'=>$email,'user_sdt'=>$user_sdt,'user_fbid'=>$user_fbid]);
-            }
-            else
-            {
-                Alert::error('Lỗi!', 'Mật khẩu mới và xác nhận mật khẩu mới phải giống nhau!!');
-                return redirect()->back()->withInput();
-            }
-            if(Auth::attempt(['email'=>$email,'password'=>$mkc]) && $mkm1 == $mkm2)
-            {
-                $password = bcrypt($mkm1);
-                User::where('id', $id)
-                ->update(['password'=>$password,'name'=>$name,'user_sdt'=>$user_sdt,'user_fbid'=>$user_fbid]);
  
                 Alert::success('Thành công!', 'Lưu thay đổi thành công');
                 return redirect()->back();  
@@ -357,16 +343,16 @@ class Pagecontroller extends Controller
         $donhang = new Donhang();
         $donhang->ID_chucnang="21";
         $donhang->thoigianorder=$tg;
-        $donhang->tongtien=$request->thanhtien;
         $donhang->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $donhang->ID_user=$id;
         $donhang->trangthai="1";
         if(isset($request->link)&& isset($request->sl) && isset($request->dongia) )
         {
+                $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơn giá: ".$request->dongia ;
+                $donhang->tongtien=$request->sl*$request->dongia;
+                $donhang->noidung= $noidung;
             if($donhang->tongtien <= $money  )
             {
-                $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơn giá: ".$request->dongia ;
-                $donhang->noidung= $noidung;
                 $donhang->save();
                 $money = $money - $donhang->tongtien;
                 $user = new Users;
@@ -398,7 +384,6 @@ class Pagecontroller extends Controller
         $donhang = new Donhang();
         $donhang->ID_chucnang="22";
         $donhang->thoigianorder=$tg;
-        $donhang->tongtien=$request->thanhtien;
         $donhang->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $donhang->ID_user=$id;
         $donhang->trangthai="1";
@@ -407,6 +392,7 @@ class Pagecontroller extends Controller
             if($donhang->tongtien <= $money  )
             {
                 $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơngiá: ".$request->dongia."<br/> Nội dung cmt: ".$request->nd;
+                $donhang->tongtien = $request->sl * $request->dongia;
                 $donhang->noidung= $noidung;
                 $donhang->save();
                 $money = $money - $donhang->tongtien;
@@ -718,6 +704,98 @@ class Pagecontroller extends Controller
     function vipreactionmonth()
     {
         return view("user.content.vipreactionmonth");
+    }
+    function postvipreactionmonth(Request $request)
+    {
+        $id = Auth::user()->id;  
+        $money  = Auth::user()->user_money; 
+        $tg = Carbon::now('Asia/Ho_Chi_Minh');
+        $donhang = new Donhang();
+        $donhang->ID_chucnang="8";
+        $donhang->thoigianorder=$tg;
+        $donhang->ghichu = isset($request->ghichu) ? $request->ghichu : "";
+        $donhang->ID_user= $id;
+        $donhang->trangthai="1";
+        if (isset($request->maxlike))
+        {
+            $minlike = $request->minlike ? $request->minlike : "0";
+            $maxlike = $request->maxlike;
+            $ndlike =" <br/> Minlike: ". $request->minlike." Maxlike: ".$request->maxlike;
+        } 
+        else
+        {
+            $maxlike =0;
+            $ndlike ="";
+        } 
+        if (isset($request->maxlove))
+        {
+            $minlove = $request->minlove ? $request->minlove : "0";
+            $maxlove = $request->maxlove;
+            $ndlove =" <br/> Minlove: ". $request->minlove." Maxlove: ".$request->maxlove;
+        } 
+        else
+        {
+            $maxlove =0;
+            $ndlove ="";
+        } 
+        if (isset($request->maxhaha))
+        {
+            $minhaha = $request->minhaha ? $request->minhaha : "0";
+            $maxhaha = $request->maxhaha;
+            $ndhaha =" <br/> Minhaha: ". $request->minhaha." Maxhaha: ".$request->maxhaha;
+        } 
+        else
+        {
+            $maxhaha =0;
+            $ndhaha ="";
+        } 
+        if (isset($request->maxsad))
+        {
+            $minsad = $request->minsad ? $request->minsad : "0";
+            $maxsad = $request->maxsad;
+            $ndsad =" <br/> Minsad: ". $request->minsad." Maxsad: ".$request->maxsad;
+        } 
+        else
+        {
+            $maxsad =0;
+            $ndsad ="";
+        } 
+        if (isset($request->maxwow ))
+        {
+            $minwow  = $request->minwow  ? $request->minwow  : "0";
+            $maxwow  = $request->maxwow ;
+            $ndwow  =" <br/> Minwow : ". $request->minwow ." Maxwow : ".$request->maxwow ;
+        } 
+        else
+        {
+            $maxwow  =0;
+            $ndwow ="";
+        } 
+        if(isset($request->link) && isset($request->slbai)&& isset($request->slngay) )
+        {
+                $noidung = "Link: ".$request->link.$ndlike.$ndlove.$ndhaha.$ndsad.$ndwow."<br/> Số lượng bài: ".$request->slbai."<br/> Số lượng ngày mua VIP: ".$request->slngay;
+                $donhang->tongtien = ($maxlike*30 +($maxlove + $maxwow + $maxhaha + $maxsad)*80) * $request->slbai * $request->slngay;
+                $donhang->noidung= $noidung;
+            if($donhang->tongtien <= $money  )
+            {
+                $donhang->save();
+                $money = $money - $donhang->tongtien;
+                $user = new Users;
+                $user->thanhtoan($id,$money);
+                Alert::success('Thành công!', 'Tạo tiến trình thành công');
+                return redirect()->back();
+            }
+            else
+            {
+                Alert::error('Lỗi!', 'Số tiền trong tài khoản của bạn không đủ');
+                return redirect()->back()->withInput();
+            }
+        }
+        else{
+            Alert::error('Lỗi!', 'Không để trống nội dung');
+            return redirect()->back()->withInput();
+        }
+
     }
 
 }

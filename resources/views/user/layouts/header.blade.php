@@ -56,7 +56,7 @@
     </svg>
   </a>
 </nav>
-  <a class="navbar-brand" href="#">Logo</a>
+  <a class="navbar-brand" href="home">Logo</a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <form class="form-inline my-2 my-lg-0 seach">
@@ -217,9 +217,9 @@ a svg{
 
 <div id="sideNavigation" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">Trang chủ</a>
-  <a href="#">Dịch Vụ</a>
-  <a href="#">Liên hệ</a>
+  <a href="home">Trang chủ</a>
+  <a href="dich-vu">Dịch Vụ</a>
+  <a href="lien-he">Liên hệ</a>
   <form class="form-inline my-2 my-lg-0 seach">
       <input class=" mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn sicon btn-outline-success  " type="submit"><i class="fa fa-search"></i></button>

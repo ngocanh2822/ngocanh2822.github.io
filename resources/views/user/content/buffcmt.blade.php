@@ -42,7 +42,7 @@
 	    			<tr>
 				        <td class="short bold">Giá tiền mỗi tương tác:</td>
 				        <td>
-							<input type="number" id="dongia" name="dongia" min="500">
+							<input type="number" id="dongia" name="dongia" min="500" value="500">
 						</td>
 	    			</tr>
 	    			<tr>
@@ -76,8 +76,6 @@
 				        	<div class="thanhtien">
 				        	Số tiền bạn phải thanh toán là: <i class="thanhtoan" style="font-size: 2rem; font-weight: bold;"></i> coin
 				        	</div>
-				        	<div id="tt">
-	    				</div>
 				        </td>
 	    			</tr>
 	    			<tr>
@@ -124,7 +122,6 @@
 		soluong = count;
 		kq = soluong * dongia;
 		$('.thanhtoan').html(kq);
-		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
 		$('#dong').html(count);
 		$('#d').html('<input type="text" name="sl" value="'+count+' " hidden="true" >');
 		$('#nd').html('<input type="text" name="nd" value="'+noidung+' " hidden="true" >');
@@ -134,7 +131,12 @@
 		dongia = dg;
 		kq = soluong * dongia;
 		$('.thanhtoan').html(kq);
-		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
+	});
+	$('#dongia').on('keyup', function(){
+		var dg = $("#dongia").val();
+		dongia = dg;
+		kq = soluong * dongia;
+		$('.thanhtoan').html(kq);
 	});
 </script>
 

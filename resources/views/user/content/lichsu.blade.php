@@ -77,7 +77,7 @@
                       	} 
                       	?>
                       </td>
-                      <td>{{$row->noidung}}</td>
+                      <td><?php echo $row->noidung?></td>
                       <td><?php 
                               $user_money = $row->tongtien;
                               $j = 0;

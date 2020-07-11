@@ -141,7 +141,7 @@ background-color: #E49459;
 			<div class="col-12 " >
 				<a href="user-history">
 				<div class="col-12 nap">
-					<h6><i class="fa fa-history" style="margin-right: 2%;"></i>LỊCH SỬ</h6>
+					<h6><i class="fa fa-history" style="margin-right: 2%;"></i>LỊCH SỬ GIAO DỊCH</h6>
 				</div>
 				</a>
 			</div>

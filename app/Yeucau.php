@@ -7,7 +7,6 @@ use DB;
 use Auth;
 class Yeucau extends Model
 {
-    //
     protected $table = 'yeucau';
     public $timestampt = false;
     protected $fillable =['ID_chucnang','noidung','sdt','ghichu','ID_user','trangthai'];

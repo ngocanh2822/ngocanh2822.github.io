@@ -17,7 +17,6 @@
                     <tr>
                       <th>STT</th>
                       <th>Admin nạp</th>
-                      <th>Người nạp</th>
                       <th>Tài khoản nạp</th>
                       <th>Nội dung</th>
                       <th>Số tiền</th>
@@ -47,7 +46,6 @@
                               }
                         ?>
                         {{$user_money}} coin</td>
-                      <td>{{$row->sotien}}</td>
                       <td>{{$row->thoigian}}</td>
                     </tr>
                     <?php $i++?>

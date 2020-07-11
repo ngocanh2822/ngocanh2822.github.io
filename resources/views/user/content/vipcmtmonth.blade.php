@@ -37,19 +37,19 @@
 					        <div class="row" >
 					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
 					        			<p class="bold" style="margin-bottom: 0;">Số lượng comment nhỏ nhất cần tăng mỗi bài viết:</p>
-					        			<input type="number" id="mincmt" name="mincmt" min="40" value="{{old('mincmt')}}">
+					        			<input type="number" id="mincmt" name="mincmt" min="40" value="40">
 					        		</div>
 					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
 					        			<p class="bold" style="margin-bottom: 0;">Số lượng comment lớn nhất cần tăng mỗi bài viết:</p>
-					        			<input type="number" id="maxcmt" name="maxcmt" min="40" value="{{old('maxcmt')}}">
+					        			<input type="number" id="maxcmt" name="maxcmt" min="40" value="40">
 					        		</div>
 					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
 					        			<p class="bold" style="margin-bottom: 0;">Số lượng bài viết trong 1 ngày:</p>
-					        			<input type="number" id="slbai" name="slbai" min="1" value="{{old('slbai')}}">
+					        			<input type="number" id="slbai" name="slbai" min="1" value="1">
 					        		</div>
 					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
 					        			<p class="bold" style="margin-bottom: 0;">Số ngày cần mua Vip:</p>
-					        			<input type="number" id="slngay" name="slngay" min="1" value="{{old('slngay')}}">
+					        			<input type="number" id="slngay" name="slngay" min="1" value="1">
 					        		</div>
 					        </div>
 					        <p class="nen" style="margin-top: 1%;">Tổng tiền của gói VIP sẽ = (Giá tiền mỗi tương tác) x (Số lượng comment lớn nhất mỗi bài) x (Số lượng bài trong ngày) x (Số ngày đăng ký VIP)</p>
@@ -58,7 +58,7 @@
 	    			<tr>
 				        <td class="short bold">Giá tiền mỗi tương tác:</td>
 				        <td>
-							<input type="number" id="dongia" name="dongia" min="500" value="{{old('dongia')}}">
+							<input type="number" id="dongia" name="dongia" min="500" value="500">
 						</td>
 	    			</tr>
 	    			<tr>
@@ -152,6 +152,34 @@
 		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
 	});
 	$('#dongia').on('click', function(){
+		var dg = $("#dongia").val();
+		dongia = dg;
+		kq = maxcmt * slbai * slngay * dongia;
+		$('.thanhtoan').html(kq);
+		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
+	});
+	$('#maxcmt').on('keyup', function(){
+		var max = $("#maxcmt").val();
+		maxcmt = max;
+		kq = maxcmt * slbai * slngay * dongia;
+		$('.thanhtoan').html(kq);
+		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
+	});
+	$('#slbai').on('keyup', function(){
+		var slb = $("#slbai").val();
+		slbai = slb;
+		kq = maxcmt * slbai * slngay * dongia;
+		$('.thanhtoan').html(kq);
+		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
+	});
+	$('#slngay').on('keyup', function(){
+		var sln = $("#slngay").val();
+		slngay = sln;
+		kq = maxcmt * slbai * slngay * dongia;
+		$('.thanhtoan').html(kq);
+		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
+	});
+	$('#dongia').on('keyup', function(){
 		var dg = $("#dongia").val();
 		dongia = dg;
 		kq = maxcmt * slbai * slngay * dongia;

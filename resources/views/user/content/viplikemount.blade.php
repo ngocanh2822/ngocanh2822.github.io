@@ -37,15 +37,15 @@
 					        <div class="row" >
 					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
 					        			<p class="bold" style="margin-bottom: 0;">Số lượng like nhỏ nhất cần tăng mỗi bài viết:</p>
-					        			<input type="number" id="minlike" name="minlike" min="40">
+					        			<input type="number" id="minlike" name="minlike" min="40" value="40">
 					        		</div>
 					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
 					        			<p class="bold" style="margin-bottom: 0;">Số lượng like lớn nhất cần tăng mỗi bài viết:</p>
-					        			<input type="number" id="maxlike" name="maxlike" min="50">
+					        			<input type="number" id="maxlike" name="maxlike" min="50" value="50">
 					        		</div>
 					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
 					        			<p class="bold" style="margin-bottom: 0;">Tổng số bài viết cần đăng ký VIP:</p>
-					        			<input type="number" id="slbai" name="slbai" min="1">
+					        			<input type="number" id="slbai" name="slbai" min="1" value="1">
 					        		</div>
 					        </div>
 					        <p class="nen" style="margin-top: 1%;">Tổng tiền của gói vip sẽ = (Giá tiền mỗi tương tác ) x (Số lượng like lớn nhất mỗi bài) x (Tổng số bài viết đăng ký VIP)</p>
@@ -54,7 +54,7 @@
 	    			<tr>
 				        <td class="short bold">Giá tiền mỗi tương tác:</td>
 				        <td>
-							<input type="number" id="dongia" name="dongia" min="30">
+							<input type="number" id="dongia" name="dongia" min="30" value="30">
 						</td>
 	    			</tr>
 	    			<tr>
@@ -134,6 +134,27 @@
 		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
 	});
 	$('#dongia').on('click', function(){
+		var dg = $("#dongia").val();
+		dongia = dg;
+		kq = maxlike * slbai * dongia;
+		$('.thanhtoan').html(kq);
+		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
+	});
+	$('#maxlike').on('keyup', function(){
+		var max = $("#maxlike").val();
+		maxlike = max;
+		kq = maxlike * slbai * dongia;
+		$('.thanhtoan').html(kq);
+		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
+	});
+	$('#slbai').on('keyup', function(){
+		var slb = $("#slbai").val();
+		slbai = slb;
+		kq = maxlike * slbai * dongia;
+		$('.thanhtoan').html(kq);
+		$('#tt').html('<input type="text" name="thanhtien" value="'+kq+' " hidden="true" >');
+	});
+	$('#dongia').on('keyup', function(){
 		var dg = $("#dongia").val();
 		dongia = dg;
 		kq = maxlike * slbai * dongia;
