@@ -61,12 +61,13 @@ class LoginController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
-        $user = DB::table('users')->select('name','email')->where('name',$name)->orWhere('email',$email)->first();
-        if(isset($user->name)){
+        //dd()
+        $user_name = DB::table('users')->select('name')->where('name',$name)->first();
+        if(!empty($user_name->name)){
             return redirect()->back()->withErrors(['name'=>'Tên này đã được sử dụng'])->withInput();
         }
-        if(isset($user->email)){
+        $user_email = DB::table('users')->select('email')->where('email',$email)->first();
+        if(!empty($user_email->email)){
             return redirect()->back()->withErrors(['email'=>'Email này đã đăng ký tài khoản'])->withInput();
         }
         if ($password != $password_confirm) {
@@ -78,7 +79,9 @@ class LoginController extends Controller
         $users->email = $email;
         $users->password = bcrypt($password);
         $users->level = 0;
+        $users->user_money = 0;
         $users->save();
+        Auth::attempt(['name'=>$name,'password'=>$password]);
         Alert::success('Complete','Đăng ký thành công');
         return redirect()->back();
 

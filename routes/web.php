@@ -99,5 +99,6 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
     Route::get('setting',['uses'=>'AdminController@setting'])->name('ad.setting');
     Route::post('update',['uses'=>'AdminController@update_admin'])->name('ad.update');
     Route::get('yeu-cau-hoan-thanh',['uses'=>'AdminController@yeucauhoanthanh'])->name('yeucauhoanthanh');
+    Route::post('search-user',['uses'=>'AdminController@search_user'])->name('search_user');
 });
 Route::get('logout',['uses'=>'LoginController@logout'])->name('ad_logout');
