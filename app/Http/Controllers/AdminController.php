@@ -36,13 +36,46 @@ class AdminController extends Controller
     }
     public function update_admin(Request $rq){
         $id = Auth::user()->id;
-        $user = new Users;
-        $name = isset($rq->name) ? $rq->name : Auth::user()->name;
-        $email = isset($rq->email) ? $rq->email : Auth::user()->email;
+        $users = new Users;
+        $name = $rq->name;
+        $email = $rq->email;
         $password = $rq->password;
         $pw_new = $rq->pw_new;
         $pw_confirm = $rq->pw_confirm;
-        
+        $messages = [
+            'name.required' => 'Không được để trống tên tài khoản.',
+            'email.required' => 'Không được để trống email.',
+            'name.min' => 'Tên tài khoản phải từ 3 - 20 ký tự.',
+            'name.max' => 'Tên tài khoản phải từ 3 - 20 ký tự.',
+            'password.min' => 'Mật khẩu phải từ 6 - 15 ký tự.',
+            'password.max' => 'Mật khẩu phải từ 6 - 15 ký tự.',
+            'pw_new.min' => 'Mật khẩu phải từ 6 - 15 ký tự.',
+            'pw_new.max' => 'Mật khẩu phải từ 6 - 15 ký tự.',
+            'pw_confirm.min' => 'Mật khẩu phải từ 6 - 15 ký tự.',
+            'pw_confirm.max' => 'Mật khẩu phải từ 6 - 15 ký tự.',
+        ];
+        $rules = ([
+            'name' => 'required|min:3|max:20',
+            'email' => 'email:rfc,dns|required',
+            'password' => 'min:6|max:15',
+            'pw_new' => 'min:6|max:15',
+            'pw_confirm' => 'min:6|max:15',
+        ]);
+
+        $validator = Validator::make($rq->all(), $rules, $messages);
+
+        $user_name = DB::table('users')->select('name')->where('name',$name)->first();
+        if ($name != Auth::user()->name) {
+            if(!empty($user_name->name) && $name == $user_name->name){
+            return redirect()->back()->withErrors(['name'=>'Tên \''.$name.'\' đã được sử dụng'])->withInput();
+            }
+        }
+        $user_email = DB::table('users')->select('email')->where('email',$email)->first();
+        if ($email != Auth::user()->email) {
+            if(!empty($user_email->email) && $email == $user_email->email){
+                return redirect()->back()->withErrors(['email'=>'Email \''.$email.'\' đã được sử dụng'])->withInput();
+            }
+        }
 
         if (!empty($password)) {
             if(Auth::attempt(['name'=>Auth::user()->name,'password'=>$password])){
@@ -57,7 +90,7 @@ class AdminController extends Controller
                 }
                 $pw_new = bcrypt($pw_new);
                 $array = array('name'=>$name,'email'=>$email,'password'=>$pw_new);
-                $user->update_admin($id,$array);
+                $users->update_admin($id,$array);
                 Auth::attempt(['name'=>$name,'password'=>$pw_confirm]);
                 Alert::success('Complete','Đã lưu');
                 return redirect()->back();
@@ -69,7 +102,7 @@ class AdminController extends Controller
         }
         else{
                 $array = array('name'=>$name,'email'=>$email);
-                $user->update_admin($id,$array);
+                $users->update_admin($id,$array);
                 Alert::success('Complete','Đã lưu');
                 return redirect()->back();
         }
@@ -90,9 +123,9 @@ class AdminController extends Controller
         $password_confirm = $rq->password_confirm;
         $messages = [
             'name.required' => 'Không được để trống tên tài khoản.',
-            'email.required' => 'Không được để trống tên tài khoản.',
-            'password.required' => 'Không được để trống tên tài khoản.',
-            'password_confirm.required' => 'Không được để trống tên tài khoản.',
+            'email.required' => 'Không được để trống email.',
+            'password.required' => 'Không được để trống mật khẩu.',
+            'password_confirm.required' => 'Không được để trống mật khẩu.',
             'name.min' => 'Tên tài khoản phải từ 3 - 20 ký tự.',
             'name.max' => 'Tên tài khoản phải từ 3 - 20 ký tự.',
             'password.min' => 'Mật khẩu phải từ 6 - 15 ký tự.',
@@ -114,10 +147,10 @@ class AdminController extends Controller
         }
 
         $user = DB::table('users')->select('name','email')->where('name',$name)->orWhere('email',$email)->first();
-        if(!empty($user->name)){
+        if(!empty($user->name) && $name == $user->name){
             return redirect()->back()->withErrors(['name'=>'Tên đã được sử dụng'])->withInput();
         }
-        if(!empty($user->email)){
+        if(!empty($user->email) && $email == $user->email){
             return redirect()->back()->withErrors(['email'=>'Email đã được sử dụng'])->withInput();
         }
         if ($password != $password_confirm) {
@@ -133,5 +166,11 @@ class AdminController extends Controller
         Alert::success('Complete','Đã tạo thành công');
         return redirect()->back();
 
+    }
+    public function search_user(Request $rq){
+        $name = $rq->user_name;
+        $user = new Users;
+        $naptien = $user->search_user($name);
+        return view('admin.pages.naptien',compact('naptien'));
     }
 }

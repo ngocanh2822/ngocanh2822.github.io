@@ -12,7 +12,7 @@ class Users extends Model
         'name', 'email', 'password','level','user_money'
     ];
     public function get_userlist(){
-    	return $this->where('level',0)->paginate(10);
+    	return $this->where('level',0)->orderBy('name')->paginate(10);
     }
 
     public function thanhtoan($id_user,$tongtien){
@@ -24,6 +24,9 @@ class Users extends Model
         $this->where('id',$id_user)->update(['user_money'=>$money]);
     }
     public function update_admin($id,$array){
-            $this->where('id',$id)->update($array);
+        $this->where('id',$id)->update($array);
+    }
+    public function search_user($name){
+        return $this->where('name','like','%'.$name.'%')->where('level',0)->paginate(10);
     }
 }

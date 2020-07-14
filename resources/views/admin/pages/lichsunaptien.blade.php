@@ -16,7 +16,7 @@
                   <thead>
                     <tr>
                       <th>STT</th>
-                      <th>Admin nạp</th>
+                      <th>Người nạp</th>
                       <th>Tài khoản nạp</th>
                       <th>Nội dung</th>
                       <th>Số tiền</th>

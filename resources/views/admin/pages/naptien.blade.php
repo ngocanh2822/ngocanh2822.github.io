@@ -8,7 +8,19 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Mới</h6>
+              <!-- search -->
+          <!-- Topbar Search -->
+            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="{{route('search_user')}}" method="post">
+              @csrf
+              <div class="input-group">
+                <input type="text" name="user_name" class="form-control border-1 small" placeholder="Nhập tên người dùng" aria-label="Search" aria-describedby="basic-addon2" required="">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -44,18 +56,17 @@
                               }
                         ?>
                         {{$user_money}} coin</td>
+                      <form action="{{route('naptien.update',$row->id)}}" method="POST">
+                        @method('PUT')
+                          @csrf
                       <td>
-                        <form action="{{route('naptien.update',$row->id)}}" method="POST">
                         <input type="number" name="tien" class="form-control" required="">
-
                       </td>
                       <td><input type="text" name="noidung" class="form-control" value="Nạp tiền vào tài khoản" required=""></td>
                       <td>
-                          @method('PUT')
-                          @csrf
                           <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i></button>
-                        </form>
                       </td>
+                      </form>
                     </tr>
                     <?php $i++?>
                     @endforeach
