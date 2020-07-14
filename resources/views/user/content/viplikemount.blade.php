@@ -114,6 +114,7 @@
 	</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="{{asset('jquery/total.js')}}"></script>
 <script type="text/javascript">
 	let maxlike=0; 
 	let slbai=0; 
