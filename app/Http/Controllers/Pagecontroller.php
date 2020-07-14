@@ -16,6 +16,7 @@ use App\Yeucau;
 use App\Naptien;
 use Auth;
 Use Alert;
+use Illuminate\Support\Facades\Validator;
 class Pagecontroller extends Controller
 {
     function getIndex()
@@ -253,6 +254,20 @@ class Pagecontroller extends Controller
     }
     function postfblikepost(Request $request)
     {
+        $messages = [
+            'sl.min' => 'Số lượng phải lớn hơn :min.',
+            'dongia.min' => 'Đơn giá phải lớn hơn :min.',
+        ];
+        $rules = ([
+            'sl' => 'min:100',
+            'dongia' => 'min:40',
+        ]);
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $id = Auth::user()->id;
         $money  = Auth::user()->user_money;
         $tg = Carbon::now('Asia/Ho_Chi_Minh');
@@ -295,6 +310,20 @@ class Pagecontroller extends Controller
     }
     function postfbsub(Request $request)
     {
+        $messages = [
+            'sl.min' => 'Số lượng phải lớn hơn :min.',
+            'dongia.min' => 'Đơn giá phải lớn hơn :min.',
+        ];
+        $rules = ([
+            'sl' => 'min:100',
+            'dongia' => 'min:40',
+        ]);
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $id = Auth::user()->id;
         $money  = Auth::user()->user_money;
         $tg = Carbon::now('Asia/Ho_Chi_Minh');
@@ -338,6 +367,20 @@ class Pagecontroller extends Controller
     }
     function postfbfanpage(Request $request)
     {
+        $messages = [
+            'sl.min' => 'Số lượng phải lớn hơn :min.',
+            'dongia.min' => 'Đơn giá phải lớn hơn :min.',
+        ];
+        $rules = ([
+            'sl' => 'min:100',
+            'dongia' => 'min:40',
+        ]);
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $id = Auth::user()->id;  
         $money  = Auth::user()->user_money;
         $tg = Carbon::now('Asia/Ho_Chi_Minh');
@@ -379,6 +422,20 @@ class Pagecontroller extends Controller
     }
     function postfbcmt(Request $request)
     {
+        $messages = [
+            'sl.min' => 'Số lượng phải lớn hơn :min.',
+            'dongia.min' => 'Đơn giá phải lớn hơn :min.',
+        ];
+        $rules = ([
+            'sl' => 'min:100',
+            'dongia' => 'min:500',
+        ]);
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $id = Auth::user()->id;  
         $money  = Auth::user()->user_money;
         $tg = Carbon::now('Asia/Ho_Chi_Minh');
@@ -420,6 +477,20 @@ class Pagecontroller extends Controller
     }
     function postfbshare(Request $request)
     {
+        $messages = [
+            'sl.min' => 'Số lượng phải lớn hơn :min.',
+            'dongia.min' => 'Đơn giá phải lớn hơn :min.',
+        ];
+        $rules = ([
+            'sl' => 'min:100',
+            'dongia' => 'min:1000',
+        ]);
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+           
         $id = Auth::user()->id; 
         $money  = Auth::user()->user_money; 
         $tg = Carbon::now('Asia/Ho_Chi_Minh');
@@ -461,6 +532,20 @@ class Pagecontroller extends Controller
     }
     function postinstalike(Request $request)
     {
+        $messages = [
+            'sl.min' => 'Số lượng phải lớn hơn :min.',
+            'dongia.min' => 'Đơn giá phải lớn hơn :min.',
+        ];
+        $rules = ([
+            'sl' => 'min:100',
+            'dongia' => 'min:70',
+        ]);
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $id = Auth::user()->id;  
         $money  = Auth::user()->user_money; 
         $tg = Carbon::now('Asia/Ho_Chi_Minh');
@@ -502,6 +587,20 @@ class Pagecontroller extends Controller
     }
     function postinstafl(Request $request)
     {
+        $messages = [
+            'sl.min' => 'Số lượng phải lớn hơn :min.',
+            'dongia.min' => 'Đơn giá phải lớn hơn :min.',
+        ];
+        $rules = ([
+            'sl' => 'min:100',
+            'dongia' => 'min:150',
+        ]);
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $id = Auth::user()->id; 
         $money  = Auth::user()->user_money;  
         $tg = Carbon::now('Asia/Ho_Chi_Minh');
@@ -543,6 +642,20 @@ class Pagecontroller extends Controller
     }
     function postinstacmt(Request $request)
     {
+        $messages = [
+            'sl.min' => 'Số lượng phải lớn hơn :min.',
+            'dongia.min' => 'Đơn giá phải lớn hơn :min.',
+        ];
+        $rules = ([
+            'sl' => 'min:100',
+            'dongia' => 'min:1000',
+        ]);
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $id = Auth::user()->id;  
         $money  = Auth::user()->user_money;  
         $tg = Carbon::now('Asia/Ho_Chi_Minh');
@@ -585,6 +698,26 @@ class Pagecontroller extends Controller
     }
     function postviplikemonth(Request $request)
     {
+        $messages = [
+            'minlike.min' => 'Số lượng like nhỏ nhất phải lớn hơn :min.',
+            'maxlike.min' => 'Số lượng like lớn nhất phải lớn hơn :min.',
+            'slbai.min' => 'Số lượng bài viết phải lớn hơn :min.',
+            'slngay.min' => 'Số ngày phải lớn hơn :min.',
+            'dongia.min' => 'Đơn giá lớn hơn :min.',
+        ];
+        $rules = ([
+            'minlike' => 'min:40',
+            'maxlike' => 'min:50',
+            'slbai' => 'min:1',
+            'slngay' => 'min:1',
+            'dongia' => 'min:30',
+        ]);
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $id = Auth::user()->id;  
         $money  = Auth::user()->user_money; 
         $tg = Carbon::now('Asia/Ho_Chi_Minh');
@@ -626,6 +759,26 @@ class Pagecontroller extends Controller
     }
     function postviplikemount(Request $request)
     {
+        $messages = [
+            'minlike.min' => 'Số lượng like nhỏ nhất phải lớn hơn :min.',
+            'maxlike.min' => 'Số lượng like lớn nhất phải lớn hơn :min.',
+            'slbai.min' => 'Số lượng bài viết phải lớn hơn :min.',
+            'slngay.min' => 'Số ngày phải lớn hơn :min.',
+            'dongia.min' => 'Đơn giá lớn hơn :min.',
+        ];
+        $rules = ([
+            'minlike' => 'min:40',
+            'maxlike' => 'min:50',
+            'slbai' => 'min:1',
+            'slngay' => 'min:1',
+            'dongia' => 'min:30',
+        ]);
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $id = Auth::user()->id;  
         $money  = Auth::user()->user_money; 
         $tg = Carbon::now('Asia/Ho_Chi_Minh');
@@ -667,6 +820,26 @@ class Pagecontroller extends Controller
     }
     function postvipcmtmonth(Request $request)
     {
+        $messages = [
+            'mincmt.min' => 'Số lượng comment nhỏ nhất phải lớn hơn :min.',
+            'maxcmt.min' => 'Số lượng comment lớn nhất phải lớn hơn :min.',
+            'slbai.min' => 'Số lượng bài viết phải lớn hơn :min.',
+            'slngay.min' => 'Số ngày phải lớn hơn :min.',
+            'dongia.min' => 'Đơn giá lớn hơn :min.',
+        ];
+        $rules = ([
+            'mincmt' => 'min:40',
+            'maxcmt' => 'min:40',
+            'slbai' => 'min:1',
+            'slngay' => 'min:1',
+            'dongia' => 'min:50',
+        ]);
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $id = Auth::user()->id;  
         $money  = Auth::user()->user_money; 
         $tg = Carbon::now('Asia/Ho_Chi_Minh');
@@ -708,6 +881,42 @@ class Pagecontroller extends Controller
     }
     function postvipreactionmonth(Request $request)
     {
+        $messages = [
+            'minlike.min' => 'Số lượng nhỏ nhất phải lớn hơn :min.',
+            'maxlike.min' => 'Số lượng lớn nhất phải lớn hơn :min.',
+            'minlove.min' => 'Số lượng nhỏ nhất phải lớn hơn :min.',
+            'maxlove.min' => 'Số lượng lớn nhất phải lớn hơn :min.',
+            'minwow.min' => 'Số lượng nhỏ nhất phải lớn hơn :min.',
+            'maxwow.min' => 'Số lượng lớn nhất phải lớn hơn :min.',
+            'minsad.min' => 'Số lượng nhỏ nhất phải lớn hơn :min.',
+            'maxsad.min' => 'Số lượng lớn nhất phải lớn hơn :min.',
+            'minhaha.min' => 'Số lượng nhỏ nhất phải lớn hơn :min.',
+            'maxhaha.min' => 'Số lượng lớn nhất phải lớn hơn :min.',
+            'slbai.min' => 'Số lượng bài viết phải lớn hơn :min.',
+            'slngay.min' => 'Số ngày phải lớn hơn :min.',
+            'dongia.min' => 'Đơn giá lớn hơn :min.',
+        ];
+        $rules = ([
+            'minlike' => 'min:40',
+            'maxlike' => 'min:50',
+            'minlove' => 'min:40',
+            'maxlove' => 'min:50',
+            'minhaha' => 'min:40',
+            'maxhaha' => 'min:50',
+            'minwow' => 'min:40',
+            'maxwow' => 'min:50',
+            'minsad' => 'min:40',
+            'maxsad' => 'min:50',
+            'slbai' => 'min:1',
+            'slngay' => 'min:1',
+            'dongia' => 'min:30',
+        ]);
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $id = Auth::user()->id;  
         $money  = Auth::user()->user_money; 
         $tg = Carbon::now('Asia/Ho_Chi_Minh');

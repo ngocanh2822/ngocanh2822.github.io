@@ -38,18 +38,30 @@
 					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
 					        			<p class="bold" style="margin-bottom: 0;">Số lượng like nhỏ nhất cần tăng mỗi bài viết:</p>
 					        			<input type="number" id="minlike" name="minlike" min="40">
+					        			@error('minlike')
+					                        <p style="color: red;">{{ $message }}</p>
+					                    @enderror
 					        		</div>
 					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
 					        			<p class="bold" style="margin-bottom: 0;">Số lượng like lớn nhất cần tăng mỗi bài viết:</p>
 					        			<input type="number" id="maxlike" name="maxlike" min="50" >
+					        			@error('maxlike')
+					                        <p style="color: red;">{{ $message }}</p>
+					                    @enderror
 					        		</div>
 					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
 					        			<p class="bold" style="margin-bottom: 0;">Số lượng bài viết cần tăng trong 1 ngày:</p>
 					        			<input type="number" id="slbai" name="slbai" min="1" >
+					        			@error('slbai')
+					                        <p style="color: red;">{{ $message }}</p>
+					                    @enderror
 					        		</div>
 					        		<div class="col-12 col-md-6" style="height: auto; width: 100%;">
 					        			<p class="bold" style="margin-bottom: 0;">Số ngày cần mua Vip:</p>
 					        			<input type="number" id="slngay" name="slngay" min="1" >
+					        			@error('slngay')
+					                        <p style="color: red;">{{ $message }}</p>
+					                    @enderror
 					        		</div>
 					        </div>
 					        <p class="nen" style="margin-top: 1%;">Tổng tiền của gói VIP sẽ = (Giá tiền mỗi tương tác) x (Số lượng like lớn nhất mỗi bài) x (Số lượng bài trong ngày) x (Số ngày đăng ký VIP)</p>
@@ -59,6 +71,9 @@
 				        <td class="short bold">Giá tiền mỗi tương tác:</td>
 				        <td>
 							<input type="number" id="dongia" name="dongia" min="30" >
+							@error('dongia')
+		                        <p style="color: red;">{{ $message }}</p>
+		                    @enderror
 						</td>
 	    			</tr>
 	    			<tr>

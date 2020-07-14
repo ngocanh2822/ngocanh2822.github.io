@@ -43,6 +43,9 @@
 				        <td class="short bold">Giá tiền mỗi tương tác:</td>
 				        <td>
 							<input type="number" id="dongia" name="dongia" min="500">
+							@error('dongia')
+		                        <p style="color: red;">{{ $message }}</p>
+		                    @enderror
 						</td>
 	    			</tr>
 	    			<tr>
