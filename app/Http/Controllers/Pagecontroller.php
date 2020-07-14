@@ -259,16 +259,16 @@ class Pagecontroller extends Controller
         $donhang = new Donhang();
         $donhang->ID_chucnang="19";
         $donhang->thoigianorder=$tg;
-        $donhang->tongtien=$request->thanhtien;
         $donhang->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $donhang->ID_user=$id;
         $donhang->trangthai="1";
         if(isset($request->link)&& isset($request->sl)&& isset($request->camxuc) && isset($request->dongia) )
         {
+                $noidung = "Link: ".$request->link."<br/> Cảm xúc: ".$request->camxuc."<br/> Số lượng: ".$request->sl."<br/> Đơn giá: ".$request->dongia;
+                $donhang->tongtien=$request->sl*$request->dongia;
+                $donhang->noidung= $noidung;
             if($donhang->tongtien <= $money  )
             {
-                $noidung = "Link: ".$request->link."<br/> Cảm xúc: ".$request->camxuc."<br/> Số lượng: ".$request->sl."<br/> Đơn giá: ".$request->dongia;
-                $donhang->noidung= $noidung;
                 $donhang->save();
                 $money = $money - $donhang->tongtien;
                 $user = new Users;
@@ -307,10 +307,11 @@ class Pagecontroller extends Controller
         $donhang->trangthai="1";
         if(isset($request->link)&& isset($request->sl) && isset($request->dongia) )
         {
+                $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơn giá: ".$request->dongia ;
+                $donhang->tongtien=$request->sl*$request->dongia;
+                $donhang->noidung= $noidung;
             if($donhang->tongtien <= $money  )
             {
-                $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơn giá: ".$request->dongia ;
-                $donhang->noidung= $noidung;
                 $donhang->save();
                 $money = $money - $donhang->tongtien;
                 $user = new Users;
@@ -389,11 +390,11 @@ class Pagecontroller extends Controller
         $donhang->trangthai="1";
         if(isset($request->link)&& isset($request->noidung) && isset($request->dongia) )
         {
+                $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơngiá: ".$request->dongia."<br/> Nội dung cmt: ".$request->nd;
+                $donhang->tongtien=$request->sl*$request->dongia;
+                $donhang->noidung= $noidung;
             if($donhang->tongtien <= $money  )
             {
-                $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơngiá: ".$request->dongia."<br/> Nội dung cmt: ".$request->nd;
-                $donhang->tongtien = $request->sl * $request->dongia;
-                $donhang->noidung= $noidung;
                 $donhang->save();
                 $money = $money - $donhang->tongtien;
                 $user = new Users;
@@ -425,16 +426,16 @@ class Pagecontroller extends Controller
         $donhang = new Donhang();
         $donhang->ID_chucnang="23";
         $donhang->thoigianorder=$tg;
-        $donhang->tongtien=$request->thanhtien;
         $donhang->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $donhang->ID_user=$id;
         $donhang->trangthai="1";
         if(isset($request->link)&& isset($request->sl) && isset($request->dongia) )
         {
+                $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơn giá: ".$request->dongia ;
+                $donhang->tongtien=$request->sl*$request->dongia;
+                $donhang->noidung= $noidung;
             if($donhang->tongtien <= $money  )
             {
-                $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơn giá: ".$request->dongia ;
-                $donhang->noidung= $noidung;
                 $donhang->save();
                 $money = $money - $donhang->tongtien;
                 $user = new Users;
@@ -466,16 +467,16 @@ class Pagecontroller extends Controller
         $donhang = new Donhang();
         $donhang->ID_chucnang="1";
         $donhang->thoigianorder=$tg;
-        $donhang->tongtien=$request->thanhtien;
         $donhang->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $donhang->ID_user=$id;
         $donhang->trangthai="1";
         if(isset($request->link)&& isset($request->sl) && isset($request->dongia) )
         {
+                $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơn giá: ".$request->dongia ;
+                $donhang->tongtien=$request->sl*$request->dongia;
+                $donhang->noidung= $noidung;
             if($donhang->tongtien <= $money  )
             {
-                $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơn giá: ".$request->dongia ;
-                $donhang->noidung= $noidung;
                 $donhang->save();
                 $money = $money - $donhang->tongtien;
                 $user = new Users;
@@ -507,16 +508,16 @@ class Pagecontroller extends Controller
         $donhang = new Donhang();
         $donhang->ID_chucnang="2";
         $donhang->thoigianorder=$tg;
-        $donhang->tongtien=$request->thanhtien;
         $donhang->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $donhang->ID_user=$id;
         $donhang->trangthai="1";
         if(isset($request->link)&& isset($request->sl) && isset($request->dongia) )
         {
+                $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơn giá: ".$request->dongia ;
+                $donhang->tongtien=$request->sl*$request->dongia;
+                $donhang->noidung= $noidung;
             if($donhang->tongtien <= $money  )
             {
-                $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơn giá: ".$request->dongia ;
-                $donhang->noidung= $noidung;
                 $donhang->save();
                 $money = $money - $donhang->tongtien;
                 $user = new Users;
@@ -548,16 +549,16 @@ class Pagecontroller extends Controller
         $donhang = new Donhang();
         $donhang->ID_chucnang="3";
         $donhang->thoigianorder=$tg;
-        $donhang->tongtien=$request->thanhtien;
         $donhang->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $donhang->ID_user= $id;
         $donhang->trangthai="1";
         if(isset($request->link)&& isset($request->noidung) && isset($request->dongia) )
         {
+                $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơngiá: ".$request->dongia."<br/> Nội dung cmt: ".$request->noidung;
+                $donhang->tongtien=$request->sl*$request->dongia;
+                $donhang->noidung= $noidung;
             if($donhang->tongtien <= $money  )
             {
-                $noidung = "Link: ".$request->link."<br/> Số lượng: ".$request->sl."<br/> Đơngiá: ".$request->dongia."<br/> Nội dung cmt: ".$request->noidung;
-                $donhang->noidung= $noidung;
                 $donhang->save();
                 $money = $money - $donhang->tongtien;
                 $user = new Users;
@@ -590,16 +591,16 @@ class Pagecontroller extends Controller
         $donhang = new Donhang();
         $donhang->ID_chucnang="5";
         $donhang->thoigianorder=$tg;
-        $donhang->tongtien=$request->thanhtien;
         $donhang->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $donhang->ID_user=$id;
         $donhang->trangthai="1";
         if(isset($request->link)&& isset($request->minlike) && isset($request->maxlike) && isset($request->slbai) && isset($request->slngay) && isset($request->dongia) )
         {
+                $noidung = "Link: ".$request->link."<br/> Minlike: ".$request->minlike."<br/> Maxlike: ".$request->maxlike."<br/> Số lượng bài: ".$request->slbai."<br/> Số lượng ngày: ".$request->slngay."<br/> Đơn giá: ".$request->dongia ;
+                $donhang->tongtien=$request->slbai*$request->dongia*$request->slngat*$request->maxlike;
+                $donhang->noidung= $noidung;
             if($donhang->tongtien <= $money  )
             {
-                $noidung = "Link: ".$request->link."<br/> Minlike: ".$request->minlike."<br/> Maxlike: ".$request->maxlike."<br/> Số lượng bài: ".$request->slbai."<br/> Số lượng ngày: ".$request->slngay."<br/> Đơn giá: ".$request->dongia ;
-                $donhang->noidung= $noidung;
                 $donhang->save();
                 $money = $money - $donhang->tongtien;
                 $user = new Users;
@@ -631,16 +632,16 @@ class Pagecontroller extends Controller
         $donhang = new Donhang();
         $donhang->ID_chucnang="6";
         $donhang->thoigianorder=$tg;
-        $donhang->tongtien=$request->thanhtien;
         $donhang->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $donhang->ID_user= $id;
         $donhang->trangthai="1";
         if(isset($request->link)&& isset($request->minlike) && isset($request->maxlike) && isset($request->slbai)&& isset($request->dongia) )
         {
+                $noidung = "Link: ".$request->link."<br/> Minlike: ".$request->minlike."<br/> Maxlike: ".$request->maxlike."<br/> Số lượng bài: ".$request->slbai."<br/> Đơn giá: ".$request->dongia ;
+                $donhang->tongtien=$request->slbai *$request->maxlike*$request->dongia;
+                $donhang->noidung= $noidung;
             if($donhang->tongtien <= $money  )
             {
-                $noidung = "Link: ".$request->link."<br/> Minlike: ".$request->minlike."<br/> Maxlike: ".$request->maxlike."<br/> Số lượng bài: ".$request->slbai."<br/> Đơn giá: ".$request->dongia ;
-                $donhang->noidung= $noidung;
                 $donhang->save();
                 $money = $money - $donhang->tongtien;
                 $user = new Users;
@@ -672,16 +673,16 @@ class Pagecontroller extends Controller
         $donhang = new Donhang();
         $donhang->ID_chucnang="8";
         $donhang->thoigianorder=$tg;
-        $donhang->tongtien=$request->thanhtien;
         $donhang->ghichu = isset($request->ghichu) ? $request->ghichu : "";
         $donhang->ID_user= $id;
         $donhang->trangthai="1";
         if(isset($request->link)&& isset($request->mincmt) && isset($request->maxcmt) && isset($request->slbai)&& isset($request->slngay)&& isset($request->dongia) )
         {
+                $noidung = "Link: ".$request->link."<br/> Mincmt: ".$request->mincmt."<br/> Maxcmt: ".$request->maxcmt."<br/> Số lượng bài: ".$request->slbai."<br/> Số lượng ngày mua VIP: ".$request->slngay."<br/> Đơn giá: ".$request->dongia."<br/> Nội dung: ".$request->nd ;
+                $donhang->tongtien=$request->maxcmt*$request->slbai*$request->slngay*$request->dongia;
+                $donhang->noidung= $noidung;
             if($donhang->tongtien <= $money  )
             {
-                $noidung = "Link: ".$request->link."<br/> Mincmt: ".$request->mincmt."<br/> Maxcmt: ".$request->maxcmt."<br/> Số lượng bài: ".$request->slbai."<br/> Số lượng ngày mua VIP: ".$request->slngay."<br/> Đơn giá: ".$request->dongia."<br/> Nội dung: ".$request->nd ;
-                $donhang->noidung= $noidung;
                 $donhang->save();
                 $money = $money - $donhang->tongtien;
                 $user = new Users;

@@ -42,7 +42,7 @@
 	    			<tr>
 				        <td class="short bold">Giá tiền mỗi tương tác:</td>
 				        <td>
-							<input type="number" id="dongia" name="dongia" min="500" value="500">
+							<input type="number" id="dongia" name="dongia" min="500">
 						</td>
 	    			</tr>
 	    			<tr>

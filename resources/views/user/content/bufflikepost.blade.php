@@ -50,7 +50,7 @@
 	    			<tr>
 				        <td class="short bold">Số lượng cần tăng:</td>
 				        <td>
-							<input type="number" id="sl" name="sl" min="100" value="100">
+							<input type="number" id="sl" name="sl" min="100" >
 						</td>
 	    			</tr>
 	    			<tr>
@@ -63,7 +63,7 @@
 	    			<tr>
 				        <td class="short bold">Giá tiền mỗi tương tác:</td>
 				        <td>
-							<input type="number" id="dongia" name="dongia" min="40" value="40">
+							<input type="number" id="dongia" name="dongia" min="40">
 						</td>
 	    			</tr>
 	    			<tr>

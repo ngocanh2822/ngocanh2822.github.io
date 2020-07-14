@@ -70,7 +70,7 @@
                   </form>
                   <hr>
                   <div class="text-center">
-                    Bạn đã có tài khoản? <a class="small" href="register"> ĐĂNG NHẬP <a>
+                    Bạn đã có tài khoản? <a class="small" href="login"> ĐĂNG NHẬP <a>
                   </div>
                 </div>
               </div>
